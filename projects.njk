@@ -1,0 +1,22 @@
+---
+layout: base.njk
+title: Projects - Kieran J. O'Leary
+---
+
+<div class="page-container">
+  <a href="/" class="back-link">← Back to Home</a>
+  
+  <header class="page-header">
+    <h1>Projects</h1>
+  </header>
+
+  <div class="project-grid">
+    {% for project in collections.projects %}
+    <div class="project-card">
+      <h3>{{ project.data.title }}</h3>
+      <p>{{ project.data.description }}</p>
+      <a href="{{ project.url }}">Learn more →</a>
+    </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,17 @@
+---
+layout: base.njk
+---
+
+<div class="page-container">
+  <a href="/projects" class="back-link">← Back to Projects</a>
+  
+  <article>
+    <header class="page-header">
+      <h1>{{ title }}</h1>
+    </header>
+    
+    <div class="post-content">
+      {{ content | safe }}
+    </div>
+  </article>
+</div>

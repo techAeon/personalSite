@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+
+<div class="page-container">
+  <a href="/blog" class="back-link">← Back to Blog</a>
+  
+  <article>
+    <header class="page-header">
+      <h1>{{ title }}</h1>
+      <p class="post-meta">{{ date | readableDate }}</p>
+    </header>
+    
+    <div class="post-content">
+      {{ content | safe }}
+    </div>
+  </article>
+</div>

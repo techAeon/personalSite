@@ -1,0 +1,15 @@
+{
+  "name": "kieran-oleary-site",
+  "version": "1.0.0",
+  "description": "Personal website for Kieran J. O'Leary - IP Attorney & Strategist",
+  "scripts": {
+    "start": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "keywords": ["eleventy", "personal-site", "portfolio"],
+  "author": "Kieran J. O'Leary",
+  "license": "ISC",
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}

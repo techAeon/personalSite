@@ -1,0 +1,115 @@
+---
+layout: base.njk
+title: Kieran J. O'Leary - IP Attorney & Strategist
+---
+
+<div class="home-container">
+  <div class="home-box">
+    <!-- Image Section -->
+    <div class="image-section">
+      <div class="portrait-wrapper">
+        <img src="/images/portrait.webp" alt="Kieran O'Leary" class="portrait sketch">
+      </div>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section">
+      <!-- Name Header -->
+      <div class="name-header">
+        <h1>Kieran J. <span class="highlight">O'Leary</span></h1>
+        <p class="subtitle">US Patent Counsel & IP Strategist</p>
+      </div>
+      
+      <!-- Tab Navigation -->
+      <nav class="tabs">
+        <button class="tab-btn active" data-tab="about">Welcome</button>
+        <button class="tab-btn" data-tab="cv">CV</button>
+        <button class="tab-btn" data-tab="projects">Projects</button>
+        <button class="tab-btn" data-tab="blog">Journal</button>
+      </nav>
+
+      <!-- About Tab (Default) -->
+      <div class="tab-content active" id="about">
+        <h2>Servus!</h2>
+        <p>I am a seasoned US Intellectual Property attorney and strategist, currently based in Munich and Pittsburgh. With over a decade of experience across solo practice, corporate media, and international law firms, I specialize in aligning IP protection with product development goals. My work bridges the gap between complex legal frameworks and technical innovation, helping global clients secure and prosecute patents in telecommunications, semiconductors, and beyond.</p>
+          <div class="contact-links">
+          <a href="mailto:kieran.j.oleary@gmail.com" class="contact-icon" title="Email">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          </a>
+          <a href="https://www.linkedin.com/in/kieranjoleary" target="_blank" class="contact-icon" title="LinkedIn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+              <rect x="2" y="9" width="4" height="12"></rect>
+              <circle cx="4" cy="4" r="2"></circle>
+            </svg>
+          </a>
+          <a href="https://github.com/yourusername" target="_blank" class="contact-icon" title="GitHub">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+          </a>
+          </div>
+      </div>
+
+      <!-- CV Tab -->
+      <div class="tab-content" id="cv">
+        <h2>Current Position</h2>
+        <h3>US Counsel</h3>
+        <p class="meta">2SPL Patentanwälte | Munich, Germany | January 2025—Present</p>
+        <p>Leading the firm's US practice group, serving as primary counsel for international clients on US IP law. Successfully secured over 150 patents in complex technical fields including machine learning, medical imaging devices, and semiconductors.</p>
+        <a href="/cv" class="more-btn">Full CV</a>
+      </div>
+
+      <!-- Projects Tab -->
+      <div class="tab-content" id="projects">
+        <h2>Featured Project</h2>
+        <h3>Pulverhorn</h3>
+        <p>A third-party preissuance submission service for anonymous filings with the USPTO. Designed to streamline the patent application process while maintaining confidentiality and compliance with USPTO requirements.</p>
+        <a href="/projects" class="more-btn">All Projects</a>
+      </div>
+
+      <!-- Blog Tab -->
+      <div class="tab-content" id="blog">
+        <h2>Recent Posts</h2>
+        {% if collections.posts.length > 0 %}
+          {% for post in collections.posts %}
+            {% if loop.index <= 4 %}
+          <div class="post-preview">
+            <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+            <p class="date">{{ post.data.date | readableDate }}</p>
+          </div>
+            {% endif %}
+          {% endfor %}
+        {% else %}
+          <p>No posts yet. Check back soon!</p>
+        {% endif %}
+        <a href="/blog" class="more-btn">All Posts</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Lightweight vanilla JS for tab switching
+document.addEventListener('DOMContentLoaded', function() {
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+  
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const targetTab = btn.getAttribute('data-tab');
+      
+      // Remove active class from all
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabContents.forEach(c => c.classList.remove('active'));
+      
+      // Add active to clicked
+      btn.classList.add('active');
+      document.getElementById(targetTab).classList.add('active');
+    });
+  });
+});
+</script>

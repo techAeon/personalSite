@@ -1,0 +1,602 @@
+/* Import fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+/* ===== ROOT VARIABLES ===== */
+:root {
+  --robin-blue: #5DADE2;
+  --charcoal: #2C2C2C;
+  --light-gray: #F5F5F5;
+  --serif: 'Playfair Display', Georgia, serif;
+  --sans: 'Inter', -apple-system, system-ui, sans-serif;
+}
+
+/* ===== GLOBAL STYLES ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--charcoal);
+  background: white;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--serif);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* ===== HOMEPAGE LAYOUT ===== */
+.home-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.home-box {
+  max-width: 1000px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  background: white;
+  /* Artistic pencil border effect */
+  border: 2px solid var(--charcoal);
+  box-shadow: 
+    3px 3px 0 rgba(44, 44, 44, 0.1),
+    6px 6px 0 rgba(44, 44, 44, 0.05);
+  position: relative;
+}
+
+/* Artistic corner accent */
+.home-box::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  width: 30px;
+  height: 30px;
+  border-top: 10px solid var(--robin-blue);
+  border-left: 10px solid var(--robin-blue);
+  z-index: 10;
+}
+
+.home-box::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  right: -5px;
+  width: 30px;
+  height: 30px;
+  border-bottom: 10px solid var(--robin-blue);
+  border-right: 10px solid var(--robin-blue);
+}
+
+/* ===== IMAGE SECTION ===== */
+.image-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--light-gray);
+}
+
+.portrait-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.portrait {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center; /* Anchor from top */
+  transition: all 0.6s ease;
+}
+
+/* B&W default state */
+.portrait.sketch {
+  filter: 
+    grayscale(100%) 
+    contrast(1.1) 
+    brightness(1);
+}
+
+/* Color on hover */
+.portrait-wrapper:hover .portrait.sketch {
+  filter: 
+    grayscale(0%) 
+    contrast(1) 
+    brightness(1);
+}
+
+/* Name Header */
+.name-header {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  text-align: left; /* Change from center to left */
+  position: relative;
+  z-index: 1;
+}
+.name-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--charcoal);
+}
+
+.name-header .highlight {
+  color: var(--robin-blue);
+}
+
+.name-header .subtitle {
+  font-size: 1.1rem;
+  color: #666;
+  font-weight: 300;
+  margin: 0;
+}
+
+/* ===== CONTENT SECTION ===== */
+.content-section {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 500px; /* Add this line */
+}
+
+/* Tab Navigation */
+.tabs {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid rgba(44, 44, 44, 0.15); /* Light gray line */
+  position: relative;
+}
+
+.tab-btn {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  background: none;
+  border: none;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  color: var(--charcoal);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 2;
+}
+
+.tab-btn:hover {
+  opacity: 0.8;
+}
+
+.tab-btn.active {
+  opacity: 1;
+  color: var(--robin-blue);
+}
+
+/* Active tab underline - sits on top of gray line */
+.tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--robin-blue);
+  border-radius: 1px;
+  z-index: 3;
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.4s ease;
+  min-height: 400px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Contact Links */
+.contact-links {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+  justify-content: flex-end; 
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  color: var(--charcoal);
+  transition: all 0.3s ease;
+  border: 2px solid rgba(44, 44, 44, 0.2);
+  border-radius: 4px;
+}
+
+.contact-icon:hover {
+  color: var(--robin-blue);
+  border-color: var(--robin-blue);
+  /*transform: translateY(-2px);*/
+}
+
+.contact-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tab-content h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--charcoal);
+}
+
+.tab-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1.5rem;
+}
+
+/* More button - artistic style */
+.more-btn {
+  display: block;
+  text-align: right;
+  color: var(--robin-blue);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  text-decoration: none;
+  margin-top: 1.5rem;
+  transition: opacity 0.3s ease;
+}
+
+.more-btn:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* Blog post preview list */
+.post-preview {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(44, 44, 44, 0.1);
+}
+
+.post-preview:last-child {
+  border-bottom: none;
+}
+
+.post-preview h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.post-preview h3 a {
+  color: var(--charcoal);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.post-preview h3 a:hover {
+  color: var(--robin-blue);
+}
+
+.post-preview .date {
+  font-size: 0.9rem;
+  color: #666;
+  font-style: italic;
+}
+
+/* ===== FULL PAGE LAYOUTS ===== */
+.page-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.page-header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 3px solid var(--charcoal);
+  position: relative;
+}
+
+.page-header::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 100px;
+  height: 3px;
+  background: var(--robin-blue);
+}
+
+.page-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 2rem;
+  color: var(--robin-blue);
+  text-decoration: none;
+  font-family: var(--sans);
+  transition: transform 0.3s;
+}
+
+.back-link:hover {
+  transform: translateX(-5px);
+}
+
+/* Page Tabs (for CV, Projects, Blog pages) */
+.page-tabs {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.page-tab-btn {
+  font-family: var(--serif);
+  font-size: 1.1rem;
+  padding: 0.5rem 0;
+  color: var(--charcoal);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  position: relative;
+}
+
+.page-tab-btn:hover {
+  opacity: 0.8;
+}
+
+.page-tab-btn.active {
+  opacity: 1;
+  color: var(--robin-blue);
+}
+
+.page-tab-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: var(--robin-blue);
+  border-radius: 1px;
+  z-index: 3;
+}
+
+/* ===== CV PAGE ===== */
+.cv-section {
+  margin-bottom: 3rem;
+}
+
+.cv-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--charcoal);
+  /* Artistic underline */
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--robin-blue);
+  display: inline-block;
+}
+
+.cv-item {
+  margin-bottom: 2rem;
+}
+
+.cv-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.cv-item .meta {
+  color: #666;
+  font-style: italic;
+  margin-bottom: 0.75rem;
+}
+
+.cv-item ul {
+  margin-left: 1.5rem;
+}
+
+.cv-item li {
+  margin-bottom: 0.5rem;
+}
+
+/* ===== PROJECTS PAGE ===== */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  border: 2px solid var(--charcoal);
+  padding: 2rem;
+  transition: all 0.3s ease;
+  position: relative;
+  background: white;
+}
+
+.project-card::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 20px;
+  height: 20px;
+  border-top: 2px solid var(--robin-blue);
+  border-left: 2px solid var(--robin-blue);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 5px 5px 0 rgba(93, 173, 226, 0.2);
+}
+
+.project-card h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.project-card p {
+  margin-bottom: 1rem;
+}
+
+.project-card a {
+  color: var(--robin-blue);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ===== BLOG PAGE & POSTS ===== */
+.blog-list {
+  margin-top: 2rem;
+}
+
+.blog-post {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(44, 44, 44, 0.2);
+}
+
+.blog-post h2 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-post h2 a {
+  color: var(--charcoal);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.blog-post h2 a:hover {
+  color: var(--robin-blue);
+}
+
+.post-meta {
+  color: #666;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.post-content {
+  line-height: 1.8;
+}
+
+.post-content h2 {
+  font-size: 1.6rem;
+  margin: 2rem 0 1rem;
+}
+
+.post-content h3 {
+  font-size: 1.3rem;
+  margin: 1.5rem 0 0.75rem;
+}
+
+.post-content p {
+  margin-bottom: 1.2rem;
+}
+
+.post-content ul, .post-content ol {
+  margin-left: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.post-content li {
+  margin-bottom: 0.5rem;
+}
+
+.post-content a {
+  color: var(--robin-blue);
+  text-decoration: underline;
+}
+
+.post-content code {
+  background: var(--light-gray);
+  padding: 0.2rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+.post-content pre {
+  background: var(--light-gray);
+  padding: 1rem;
+  overflow-x: auto;
+  margin-bottom: 1.2rem;
+  border-left: 3px solid var(--robin-blue);
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .home-box {
+    grid-template-columns: 1fr;
+    max-width: 500px;
+  }
+  
+  .image-section {
+    height: 350px;
+  }
+
+  .portrait {
+    object-position: top center;
+  }
+  
+  .name-header {
+    text-align: center;
+  }
+  
+  .content-section {
+    padding: 2rem;
+    min-height: 450px; /* Shorter on mobile but still fixed */
+  }
+  
+  .content-section {
+    padding: 2rem;
+  }
+  
+  .tabs {
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+  
+  .tab-btn {
+    font-size: 1rem;
+  }
+  
+  .tab-content h2 {
+    font-size: 1.5rem;
+  }
+  
+  .tab-content p {
+    font-size: 1rem;
+  }
+  
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
