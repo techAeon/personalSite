@@ -15,6 +15,23 @@
     })();
   </script>
   <link rel="stylesheet" href="/personalSite/css/style.css">
+  <script>
+    // FOUC prevention — set data-theme before first paint
+    (function(){
+      try {
+        var s = localStorage.getItem('kjo-theme') || 'light';
+        // data-theme only ever gets 'light' or 'dark'
+        if (s === 'dark') {
+          document.documentElement.setAttribute('data-theme','dark');
+        }
+        // occasion mode also needs its attribute for wallpaper
+        if (s === 'occasion') {
+          document.documentElement.setAttribute('data-theme','light');
+          document.documentElement.setAttribute('data-occasion','pending');
+        }
+      } catch(e){}
+    })();
+  </script>
 </head>
 <body>
   
