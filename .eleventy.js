@@ -57,6 +57,5 @@ module.exports = function(eleventyConfig) {
     passthroughFileCopy: true,
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk"
-    pathPrefix: "/personalSite/"
   };
 };
