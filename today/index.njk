@@ -1,0 +1,319 @@
+---
+layout: base.njk
+title: Today
+permalink: /today/index.html
+---
+
+{#
+  today.njk
+  Static page built by Eleventy. All post data embedded at build time.
+  A small script filters to today's MM-DD on load — no server needed,
+  works perfectly on Netlify free tier.
+
+  Linked from the homepage date: /today/ or /today/#occasion-id
+#}
+
+<style>
+  .today-wrapper {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    font-family: var(--sans);
+  }
+
+  .today-header { margin-bottom: 2.5rem; }
+
+  .today-header h1 {
+    font-family: var(--serif);
+    font-size: 2rem;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+  }
+
+  .today-dateline {
+    font-size: 0.8rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* ── Occasion banner ── */
+  .today-occasion {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    margin-bottom: 2rem;
+    background: rgba(93,173,226,0.04);
+  }
+
+  .today-occasion h2 {
+    font-family: var(--serif);
+    font-size: 1.3rem;
+    color: var(--accent);
+    margin-bottom: 0.2rem;
+  }
+
+  .today-occasion .occasion-location {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin-bottom: 0.85rem;
+  }
+
+  .today-occasion .occasion-factoid {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+  }
+
+  .today-occasion .occasion-source {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  .occasion-about-link {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  .occasion-about-link:hover { text-decoration: underline; }
+
+  /* ── Generic factoid ── */
+  .today-factoid {
+    border-left: 2px solid var(--accent);
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+
+  .today-factoid blockquote {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 0.35rem;
+    font-style: italic;
+  }
+
+  .today-factoid cite {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-style: normal;
+  }
+
+  /* ── Posts section ── */
+  .today-posts h2 {
+    font-family: var(--sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+  }
+
+  .today-post-item {
+    padding: 0.85rem 0;
+    border-top: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.25rem 1rem;
+    align-items: start;
+  }
+
+  .today-post-item:last-child { border-bottom: 1px solid var(--border); }
+
+  .today-post-link {
+    font-family: var(--serif);
+    font-size: 1rem;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .today-post-link:hover { color: var(--accent); }
+
+  .today-post-year {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    font-family: var(--sans);
+    padding-top: 0.2rem;
+  }
+
+  .today-post-desc {
+    font-size: 0.875rem;
+    color: var(--text-muted);
+    line-height: 1.5;
+    grid-column: 1 / -1;
+    margin-top: 0.1rem;
+  }
+
+  .today-empty {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-style: italic;
+    padding: 1rem 0;
+    border-top: 1px solid var(--border);
+  }
+</style>
+
+<div class="today-wrapper">
+
+  <header class="today-header">
+    <h1 id="today-heading">On This Day</h1>
+    <p class="today-dateline" id="today-dateline"></p>
+  </header>
+
+  {# Occasion section — shown by JS when an occasion is active #}
+  <section class="today-occasion" id="today-occasion" style="display:none">
+    <h2 id="occ-name"></h2>
+    <p class="occasion-location" id="occ-location"></p>
+    <p class="occasion-factoid" id="occ-factoid"></p>
+    <p class="occasion-source" id="occ-source"></p>
+    <a class="occasion-about-link" id="occ-link" href="/about/#occasions">
+      Why this matters to me &rarr;
+    </a>
+  </section>
+
+  {# Generic factoid — shown when no occasion is active #}
+  <section class="today-factoid" id="today-factoid" style="display:none">
+    <blockquote id="factoid-text"></blockquote>
+    <cite id="factoid-source"></cite>
+  </section>
+
+  {# Posts from this date in previous years #}
+  <section class="today-posts">
+    <h2>Posts from this date</h2>
+    <div id="today-posts-list"></div>
+  </section>
+
+</div>
+
+{#
+  Embed ALL posts as a JS array at build time.
+  Eleventy generates this once; the browser filters by today's MM-DD.
+  Requires posts to have `title`, `date`, and optionally `description` in frontmatter.
+  Requires a `dateOnly` filter in eleventy.config.js — see eleventy-setup.js.
+#}
+<script>
+var ALL_POSTS = [
+  {%- for post in collections.post | reverse %}
+  {
+    "title": {{ post.data.title | dump | safe }},
+    "url":   {{ post.url | dump | safe }},
+    "mmdd":  "{{ post.date | dateOnly('MM-dd') }}",
+    "year":  "{{ post.date | dateOnly('yyyy') }}",
+    "desc":  {{ (post.data.description or "") | dump | safe }}
+  }{% if not loop.last %},{% endif %}
+  {%- endfor %}
+];
+</script>
+
+<script>
+(function () {
+
+  var DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var MONTHS = ['January','February','March','April','May','June',
+                'July','August','September','October','November','December'];
+
+  var now  = new Date();
+  var dd   = now.getDate();
+  var mm   = now.getMonth() + 1;
+  var mmdd = String(mm).padStart(2,'0') + '-' + String(dd).padStart(2,'0');
+  var v    = dd % 100;
+  var sfx  = (v >= 11 && v <= 13) ? 'th'
+           : dd % 10 === 1 ? 'st' : dd % 10 === 2 ? 'nd'
+           : dd % 10 === 3 ? 'rd' : 'th';
+
+  var dateStr = DAYS[now.getDay()] + ', '
+              + MONTHS[now.getMonth()] + ' ' + dd + sfx;
+
+  /* Heading and dateline */
+  var headingEl  = document.getElementById('today-heading');
+  var datelineEl = document.getElementById('today-dateline');
+  if (datelineEl) datelineEl.textContent = dateStr;
+
+  /* Find active occasion from DAILY (inlined by Eleventy in base layout) */
+  var OCCASIONS = (typeof DAILY !== 'undefined' && DAILY.occasions) ? DAILY.occasions : [];
+  var FACTOIDS  = (typeof DAILY !== 'undefined' && DAILY.factoids)  ? DAILY.factoids  : [];
+
+  var active = null;
+  for (var i = 0; i < OCCASIONS.length; i++) {
+    var o = OCCASIONS[i];
+    if (mmdd >= o.start && mmdd <= o.end) { active = o; break; }
+  }
+
+  /* ── Show occasion or fallback factoid ── */
+  if (active) {
+    if (headingEl) headingEl.textContent = active.name;
+    var sec = document.getElementById('today-occasion');
+    if (sec) sec.style.display = '';
+
+    /* Update accent border colour to match occasion */
+    if (sec) sec.style.borderLeftColor = active.accent;
+
+    document.getElementById('occ-name').textContent     = active.name;
+    document.getElementById('occ-location').textContent = active.location;
+    document.getElementById('occ-factoid').textContent  = active.factoid;
+    document.getElementById('occ-source').textContent   = '— ' + active.factoid_source;
+
+    /* Deep-link to the occasions section of the about page */
+    var link = document.getElementById('occ-link');
+    if (link) link.href = '/about/#' + active.id;
+
+  } else {
+    /* Find factoid for today's exact date, or pick a random one */
+    var factoid = null;
+    for (var fi = 0; fi < FACTOIDS.length; fi++) {
+      if (FACTOIDS[fi].date === mmdd) { factoid = FACTOIDS[fi]; break; }
+    }
+    if (!factoid && FACTOIDS.length) {
+      factoid = FACTOIDS[Math.floor(Math.random() * FACTOIDS.length)];
+    }
+    if (factoid) {
+      var fsec = document.getElementById('today-factoid');
+      if (fsec) fsec.style.display = '';
+      var ft = document.getElementById('factoid-text');
+      var fs = document.getElementById('factoid-source');
+      if (ft) ft.textContent = factoid.text;
+      if (fs) fs.textContent = '— ' + factoid.source;
+    }
+  }
+
+  /* ── Filter posts to today's MM-DD ── */
+  var posts = (typeof ALL_POSTS !== 'undefined' ? ALL_POSTS : [])
+    .filter(function(p) { return p.mmdd === mmdd; });
+
+  var listEl = document.getElementById('today-posts-list');
+  if (!listEl) return;
+
+  if (posts.length === 0) {
+    var empty = document.createElement('p');
+    empty.className = 'today-empty';
+    empty.textContent = 'Nothing published on this date yet — check back next year.';
+    listEl.appendChild(empty);
+  } else {
+    posts.forEach(function(p) {
+      var art = document.createElement('article');
+      art.className = 'today-post-item';
+      art.innerHTML =
+        '<a class="today-post-link" href="' + p.url + '">' + p.title + '</a>' +
+        '<span class="today-post-year">' + p.year + '</span>' +
+        (p.desc ? '<p class="today-post-desc">' + p.desc + '</p>' : '');
+      listEl.appendChild(art);
+    });
+  }
+
+  /* ── Scroll to occasion anchor if URL has #id ── */
+  if (window.location.hash && active && window.location.hash === '#' + active.id) {
+    var sec2 = document.getElementById('today-occasion');
+    if (sec2) setTimeout(function() { sec2.scrollIntoView({ behavior: 'smooth' }); }, 100);
+  }
+
+})();
+</script>
