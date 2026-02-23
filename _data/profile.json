@@ -1,0 +1,52 @@
+{
+  "funFacts": {
+    "book": {
+      "title": "The Name of the Rose",
+      "author": "Umberto Eco",
+      "note": "A medieval murder mystery tangled up in semiotics and library politics. Perfect for a lawyer who reads between the lines."
+    },
+    "podcast": {
+      "title": "Cautionary Tales",
+      "host": "Tim Harford",
+      "note": "History's biggest disasters, methodically dissected. A reminder that certainty is usually a warning sign."
+    },
+    "show": {
+      "title": "Better Call Saul",
+      "note": "Still the most nuanced portrait of the legal profession ever filmed. Sorry, Suits."
+    },
+    "hobby": {
+      "title": "Rugby Union",
+      "note": "Second row since 2017. Still learning when to keep my head down — on the pitch, anyway."
+    }
+  },
+  "skills": {
+    "legal": [
+      "US Patent Prosecution",
+      "Freedom-to-Operate (FTO) Analysis",
+      "IP Portfolio Strategy",
+      "Trademark Applications",
+      "IP Licensing & Agreements",
+      "USPTO Pro Bono Program"
+    ],
+    "technical": [
+      "Machine Learning & AI Systems",
+      "Medical Imaging & Diagnostics",
+      "Semiconductor Technologies",
+      "Telecommunications & 5G",
+      "Software-Enabled Systems",
+      "Medical Devices & Drug Delivery"
+    ],
+    "tools": [
+      "USPTO Patent Center",
+      "EPO / Espacenet",
+      "Patent Docketing Systems",
+      "Eleventy (11ty)",
+      "Laravel"
+    ],
+    "languages": [
+      "English (native)",
+      "German (B1, active learner)",
+      "Legal German (advanced reading)"
+    ]
+  }
+}

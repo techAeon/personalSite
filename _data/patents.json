@@ -1,0 +1,37 @@
+[
+  {
+    "number": "US 11,514,278 B2",
+    "title": "Neural Network-Based Anomaly Detection in Medical Imaging Systems",
+    "applicant": "Siemens Healthineers AG",
+    "issued": "Nov 29, 2022",
+    "field": "Medical Imaging / AI"
+  },
+  {
+    "number": "US 11,721,409 B2",
+    "title": "Method and Apparatus for Low-Power Signal Processing in Semiconductor Devices",
+    "applicant": "Infineon Technologies AG",
+    "issued": "Aug 8, 2023",
+    "field": "Semiconductors"
+  },
+  {
+    "number": "US 11,903,662 B2",
+    "title": "Adaptive Beamforming System for 5G Millimeter Wave Communications",
+    "applicant": "Nokia of America Corporation",
+    "issued": "Feb 13, 2024",
+    "field": "Telecommunications"
+  },
+  {
+    "number": "US 12,001,714 B2",
+    "title": "Machine Learning Framework for Real-Time Histopathology Classification",
+    "applicant": "Roche Diagnostics GmbH",
+    "issued": "Jun 4, 2024",
+    "field": "Medical Imaging / AI"
+  },
+  {
+    "number": "US 11,256,891 B1",
+    "title": "Secure Multi-Party Computation Protocol for Federated Learning in Healthcare",
+    "applicant": "Philips GmbH Market DACH",
+    "issued": "Feb 22, 2022",
+    "field": "AI / Privacy"
+  }
+]

@@ -1,0 +1,180 @@
+---
+layout: print-base.njk
+title: CV - Kieran J. O'Leary
+---
+
+<div class="print-page" id="print-page">
+
+  {# ── Actions bar (hidden when printing) ── #}
+  <div class="print-actions" id="print-actions">
+    <button onclick="window.print()" class="print-action-btn" type="button">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 6 2 18 2 18 9"/>
+        <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+        <rect x="6" y="14" width="12" height="8"/>
+      </svg>
+      Print / Save as PDF
+    </button>
+    <a href="{{ '/about/' | url }}#work-history" class="print-back-link">
+      &larr; Back to About
+    </a>
+    <div class="print-view-toggle">
+      <span class="print-view-label">Showing:</span>
+      <button class="print-toggle-btn is-active" data-print-view="one" type="button">One Page</button>
+      <button class="print-toggle-btn" data-print-view="all" type="button">Full CV</button>
+    </div>
+  </div>
+
+  {# ── CV Header ── #}
+  <header class="print-cv-header">
+    <h1>Kieran J. O'Leary</h1>
+    <p class="print-cv-subtitle">US Patent Counsel &amp; IP Strategist</p>
+    <p class="print-cv-contact">
+      Munich, Germany &amp; Pittsburgh, PA
+      &nbsp;&middot;&nbsp;
+      <a href="mailto:kieran.j.oleary@gmail.com">kieran.j.oleary@gmail.com</a>
+      &nbsp;&middot;&nbsp;
+      USPTO Reg. No. 72826
+    </p>
+  </header>
+
+  {# ── Experience ── #}
+  <section class="print-section">
+    <h2>Experience</h2>
+
+    <div class="print-entry">
+      <div class="print-entry__head">
+        <h3>US Counsel</h3>
+        <span class="print-entry__meta">2SPL Patentanwälte &mdash; Munich, Germany &mdash; January 2025&ndash;Present</span>
+      </div>
+      <ul>
+        <li>Lead the firm's US practice group, serving as primary counsel for international clients on US IP law</li>
+        <li>Successfully secured over 150 patents in complex technical fields for major international clients</li>
+        <li>Collaborate with technical teams to protect innovations in machine learning, medical imaging, and semiconductors</li>
+      </ul>
+    </div>
+
+    <div class="print-entry">
+      <div class="print-entry__head">
+        <h3>US Patent Attorney</h3>
+        <span class="print-entry__meta">2SPL Patentanwälte &mdash; Munich, Germany &mdash; May 2019&ndash;December 2024</span>
+      </div>
+      <ul>
+        <li>Managed the full lifecycle of prosecution for US utility, design, and trademark applications</li>
+        <li>Authored Freedom-to-Operate (FTO) opinions and validity analyses</li>
+        <li>Created and delivered training programs for European patent paralegals on US IP law</li>
+        <li>Coordinated with foreign associates across USPTO, EPO, JPO, and CNIPA</li>
+      </ul>
+    </div>
+
+    <div class="print-entry print-entry--extra">
+      <div class="print-entry__head">
+        <h3>Senior Associate Editor, Practical Law</h3>
+        <span class="print-entry__meta">Thomson Reuters &mdash; Washington, DC &mdash; November 2015&ndash;April 2019</span>
+      </div>
+      <ul>
+        <li>Collaborated on the launch of the Life Science service covering FDA regulations for drugs, biologics, and medical devices</li>
+        <li>Authored practice notes on IP and FDA developments for a broad audience</li>
+      </ul>
+    </div>
+
+    <div class="print-entry">
+      <div class="print-entry__head">
+        <h3>Patent Attorney</h3>
+        <span class="print-entry__meta">Kolslaw, P.C. &mdash; Harrisburg, PA &mdash; August 2014&ndash;April 2019</span>
+      </div>
+      <ul>
+        <li>Founded solo practice focused on startups; advised on business formation, IP protection, and commercialization</li>
+        <li>Represented independent inventors through the USPTO Pro Bono program</li>
+      </ul>
+    </div>
+
+    <div class="print-entry print-entry--extra">
+      <div class="print-entry__head">
+        <h3>Legal Intern</h3>
+        <span class="print-entry__meta">Bayer Healthcare &mdash; Indianola, PA &mdash; May 2013&ndash;December 2013</span>
+      </div>
+      <ul>
+        <li>Supported Chief IP Counsel on patent prosecution and trademark analysis for medical injectors and radiology software</li>
+      </ul>
+    </div>
+  </section>
+
+  {# ── Education ── #}
+  <section class="print-section">
+    <h2>Education</h2>
+
+    <div class="print-entry">
+      <div class="print-entry__head">
+        <h3>J.D.; Intellectual Property Law Certificate</h3>
+        <span class="print-entry__meta">University of Pittsburgh &mdash; Pittsburgh, PA &mdash; 2014</span>
+      </div>
+    </div>
+
+    <div class="print-entry">
+      <div class="print-entry__head">
+        <h3>B.A., Political Science; Minor, Computer Science</h3>
+        <span class="print-entry__meta">University of Pittsburgh &mdash; Pittsburgh, PA &mdash; 2011</span>
+      </div>
+      <p>40 credit hours in Computer Science</p>
+    </div>
+
+    <div class="print-entry print-entry--extra">
+      <div class="print-entry__head">
+        <h3>Certificate in Drug Development</h3>
+        <span class="print-entry__meta">Temple University School of Pharmacy &mdash; Philadelphia, PA &mdash; 2018</span>
+      </div>
+    </div>
+  </section>
+
+  {# ── Admissions ── #}
+  <section class="print-section">
+    <h2>Admissions</h2>
+    <ul class="print-admissions">
+      <li>United States Patent and Trademark Office (No. 72826)</li>
+      <li class="print-entry--extra">District of Columbia (No. 1034392)</li>
+      <li class="print-entry--extra">Pennsylvania (No. 318600)</li>
+    </ul>
+  </section>
+
+</div>
+
+{# ── JS: read ?view= param and show/hide extra entries ── #}
+<script>
+(function () {
+  var view = 'one';
+  try {
+    var param = new URLSearchParams(window.location.search).get('view');
+    if (param === 'all') view = 'all';
+  } catch (e) {}
+
+  function applyView(v) {
+    var extras = document.querySelectorAll('.print-entry--extra, .print-entry--extra');
+    var isAll = (v === 'all');
+    for (var i = 0; i < extras.length; i++) {
+      extras[i].style.display = isAll ? '' : 'none';
+    }
+    var btns = document.querySelectorAll('.print-toggle-btn');
+    for (var j = 0; j < btns.length; j++) {
+      btns[j].classList.toggle('is-active', btns[j].dataset.printView === v);
+    }
+    var label = document.querySelector('.print-view-label');
+    if (label) label.textContent = 'Showing:';
+  }
+
+  applyView(view);
+
+  var toggleBtns = document.querySelectorAll('.print-toggle-btn');
+  for (var k = 0; k < toggleBtns.length; k++) {
+    toggleBtns[k].addEventListener('click', (function(btn) {
+      return function () {
+        view = btn.dataset.printView;
+        applyView(view);
+        var url = new URL(window.location.href);
+        url.searchParams.set('view', view);
+        window.history.replaceState(null, '', url.toString());
+      };
+    })(toggleBtns[k]));
+  }
+})();
+</script>
