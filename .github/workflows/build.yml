@@ -12,7 +12,7 @@ jobs:
         with:
           node-version: 20
       - run: npm install
-      - run: npm run build
+      - run: npm run build -- --pathprefix=/personalSite/
       - uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
