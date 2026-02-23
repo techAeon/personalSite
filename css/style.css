@@ -253,6 +253,44 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .nav-link:hover { color: var(--accent); background: rgba(93,173,226,0.08); }
 .nav-link svg { width: 17px; height: 17px; }
 
+/* Nest the whole accordion in a slightly raised surface */
+[data-theme="dark"] .nav-accordion {
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+  padding: 0.25rem 0.75rem;
+}
+
+/* Remove the raw border-on-border look — let padding do the work */
+[data-theme="dark"] .nav-item {
+  border-color: rgba(255,255,255,0.06);
+}
+
+/* Open item: lifted card feel */
+[data-theme="dark"] .nav-item.is-open {
+  background: rgba(255,255,255,0.04);
+  border-radius: 4px;
+  margin: 0.25rem -0.75rem;
+  padding: 0 0.75rem;
+}
+
+/* Summary text larger */
+.nav-summary {
+  font-size: 1.05rem;  /* was 0.92rem */
+}
+
+/* Body content: clearly nested below the heading */
+[data-theme="dark"] .nav-body-inner {
+  background: rgba(0,0,0,0.15);
+  border-radius: 0 0 4px 4px;
+  margin: 0 -0.75rem;
+  padding: 0.5rem 0.75rem 0.75rem;
+}
+
+/* More breathing room between items */
+[data-theme="dark"] .nav-item {
+  padding: 0.15rem 0;
+}
+
 /* ── ACCORDION BODY ANIMATION ── */
 .nav-body {
   display: grid;
