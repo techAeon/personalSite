@@ -292,9 +292,10 @@ h1, h2, h3, h4, h5, h6 {
   grid-template-rows: 0fr;
   transition: grid-template-rows 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
+  visibility: hidden;
 }
 
-.nav-item.is-open .nav-body { grid-template-rows: 1fr; }
+.nav-item.is-open .nav-body { grid-template-rows: 1fr; visibility: visible; }
 
 .nav-body-inner {
   min-height: 0; overflow: hidden;
@@ -334,25 +335,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .more-btn:hover { opacity: 0.7; text-decoration: underline; }
 
-/* ── Dark mode accordion ── */
-[data-theme="dark"] .nav-item { border-color: rgba(255,255,255,0.06); }
-
-[data-theme="dark"] .nav-summary:hover { background: rgba(255,255,255,0.05); }
-
-[data-theme="dark"] .nav-item.is-open .nav-summary { background: rgba(255,255,255,0.04); }
-
-[data-theme="dark"] .nav-body-inner { background: rgba(255,255,255,0.02); }
-
-[data-theme="dark"] .nav-link {
-  color: rgba(255,255,255,0.25);
-  border-color: rgba(255,255,255,0.08);
-}
-
-[data-theme="dark"] .nav-link:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-  background: rgba(93,173,226,0.1);
-}
 
 /* ═══════════════════════════════════════════════
    FOOTER
