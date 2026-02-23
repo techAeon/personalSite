@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,7 @@
   {{ content | safe }}
   <script>var DAILY = {{ daily | dump | safe }};</script>
   <script src="{{ '/js/theme.js' | url }}"></script>
-  {% if page.url == "/" %}
+  {% if page.fileSlug == "" %}
   <script src="{{ '/js/home.js' | url }}"></script>
   {% endif %}
 </body>
