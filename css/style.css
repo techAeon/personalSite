@@ -109,8 +109,15 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .portrait-wrapper::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; height: 80px;
-  background: linear-gradient(to bottom, transparent, var(--accent));
+  position: absolute; bottom: 0; left: 0; right: 0; 
+  height: 150px; /* Taller gradient */
+  background: linear-gradient(
+    to bottom, 
+    rgba(93, 173, 226, 0) 0%,      /* Fully transparent at top */
+    rgba(93, 173, 226, 0.3) 40%,   /* Subtle hint */
+    rgba(93, 173, 226, 0.7) 70%,   /* More visible */
+    rgba(93, 173, 226, 1) 100%     /* Full color at bottom */
+  );
   pointer-events: none;
 }
 
