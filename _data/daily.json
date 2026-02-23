@@ -1,6 +1,18 @@
 {
   "occasions": [
     {
+      "id": "test-occasion",
+      "name": "Test Occasion Week",
+      "location": "Everywhere",
+      "start": "02-23",
+      "end": "03-01",
+      "accent": "#7B4FA6",
+      "accent_dark": "#A67DD4",
+      "factoid": "This is a test occasion. If you can see purple accents and a custom icon in the theme button, everything is working correctly.",
+      "factoid_source": "daily.json",
+      "icon": "<polygon points='12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2'/>"
+    }
+    {
       "id": "cherry-blossom",
       "name": "National Cherry Blossom Festival",
       "location": "Washington, DC",
