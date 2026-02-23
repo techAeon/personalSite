@@ -8,5 +8,8 @@
 </head>
 <body>
   {{ content | safe }}
+  <script>var DAILY = {{ daily | dump | safe }};</script>
+  <script src="/js/theme.js"></script>
+  {% if page.url == "/" %}<script src="/js/home.js"></script>{% endif %}
 </body>
 </html>
