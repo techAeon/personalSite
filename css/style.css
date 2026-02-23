@@ -109,15 +109,13 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .portrait-wrapper::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0; 
-  height: 60px; /* Taller gradient */
-  background: linear-gradient(
-    to bottom, 
-    rgba(93, 173, 226, 0) 0%,      /* Fully transparent at top */
-    rgba(93, 173, 226, 0.3) 40%,   /* Subtle hint */
-    rgba(93, 173, 226, 0.7) 70%,   /* More visible */
-    rgba(93, 173, 226, 1) 100%     /* Full color at bottom */
-  );
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 120px;
+  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
+  background-size: 6px 6px;
+  /* Fade the dot field itself so dots dissolve upward */
+  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  mask-image: linear-gradient(to top, black 0%, transparent 100%);
   pointer-events: none;
 }
 
