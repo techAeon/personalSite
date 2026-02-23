@@ -10,6 +10,8 @@
   {{ content | safe }}
   <script>var DAILY = {{ daily | dump | safe }};</script>
   <script src="{{ '/js/theme.js' | url }}"></script>
-  {% if page.url == "/" %}<script src="{{ '/js/home.js' | url }}"></script>{% endif %}
+  {% if page.url == "/" %}
+  <script src="{{ '/js/home.js' | url }}"></script>
+  {% endif %}
 </body>
 </html>
