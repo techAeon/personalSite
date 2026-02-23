@@ -110,13 +110,22 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .portrait-wrapper::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
-  background-size: 6px 6px;
-  /* Fade the dot field itself so dots dissolve upward */
-  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
-  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  height: 180px;  /* taller so dots have room to graduate */
+  /* Dot grid — uses accent colour so it themes automatically */
+  background-image: radial-gradient(circle, var(--accent) 1.2px, transparent 1.2px);
+  background-size: 8px 8px;
+  /* Mask fades dots: solid at bottom, invisible at top */
+  -webkit-mask-image: linear-gradient(to top, black 0%, black 30%, transparent 100%);
+          mask-image: linear-gradient(to top, black 0%, black 30%, transparent 100%);
   pointer-events: none;
+}
+
+/* Mobile: shallower dot fade */
+@media (max-width: 768px) {
+  .portrait-wrapper::after {
+    height: 80px;
+    background-size: 6px 6px;
+  }
 }
 
 .image-fill { flex: 1; background: var(--accent); }
@@ -257,21 +266,42 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 [data-theme="dark"] .nav-accordion {
   background: rgba(255,255,255,0.03);
   border-radius: 6px;
-  padding: 0.25rem 0.75rem;
+  padding: 0 0.75rem;
+  overflow: hidden; /* prevent content bleeding outside rounded corners */
 }
 
-/* Remove the raw border-on-border look — let padding do the work */
 [data-theme="dark"] .nav-item {
   border-color: rgba(255,255,255,0.06);
+  margin: 0;
 }
 
-/* Open item: lifted card feel */
-[data-theme="dark"] .nav-item.is-open {
-  background: rgba(255,255,255,0.04);
-  border-radius: 4px;
-  margin: 0.25rem -0.75rem;
-  padding: 0 0.75rem;
+/* Open item: lift the whole row as a card */
+[data-theme="dark"] .nav-item.is-open > .nav-summary {
+  background: rgba(255,255,255,0.05);
+  border-radius: 4px 4px 0 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  margin: 0 -0.75rem;
+  padding-left: 0.75rem;
 }
+
+/* Body: slightly inset below open summary */
+[data-theme="dark"] .nav-item.is-open .nav-body-inner {
+  background: rgba(0,0,0,0.12);
+  margin: 0 -0.75rem;
+  padding: 0.65rem 0.75rem 0.85rem;
+  border-radius: 0 0 4px 4px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+/* Closed items: no background, just the border separator */
+[data-theme="dark"] .nav-item:not(.is-open) > .nav-summary {
+  background: none;
+}
+
+[data-theme="dark"] .nav-link {
+  color: rgba(255,255,255,0.2);
+  border-color: rgba(255,255,255,0.08);
 
 /* Summary text larger */
 .nav-summary {
