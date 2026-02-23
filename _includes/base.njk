@@ -89,7 +89,7 @@
       </div>
 
       <nav class="home-footer__nav">
-        <a href="{{ '/' | url }}">About</a>
+        <a href="{{ '/about' | url }}">About</a>
         <a href="{{ '/projects' | url }}">Projects</a>
         <a href="{{ '/blog' | url }}">Journal</a>
       </nav>
@@ -118,9 +118,9 @@
     </div>
   </footer>
   {% endif %}
-
-  <script>var DAILY = {{ daily | dump | safe }};</script>
+  {% if page.fileSlug != "" %}
   <script src="{{ '/js/theme.js' | url }}"></script>
+  {% endif %}
   {% if page.fileSlug == "" %}
   <script src="{{ '/js/home.js' | url }}"></script>
   {% endif %}
