@@ -1,63 +1,51 @@
+/**
+ * home.js
+ * Homepage-only script. Theme/accent is handled by theme.js (base layout).
+ * This file handles: date display, date link, accordion.
+ *
+ * Requires theme.js to have already run (DAILY and activeOccasion in scope
+ * via theme.js, or re-derived here from window.DAILY).
+ */
 (function () {
 
-  /* ── Date ── */
+  /* ── Date display ── */
   var DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-  var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-  var now = new Date();
-  var dd  = now.getDate();
-  var v   = dd % 100;
-  var sfx = (v >= 11 && v <= 13) ? 'th' : dd % 10 === 1 ? 'st' : dd % 10 === 2 ? 'nd' : dd % 10 === 3 ? 'rd' : 'th';
+  var MONTHS = ['January','February','March','April','May','June',
+                'July','August','September','October','November','December'];
 
-  var THEME_URL = '';
-  var datePart  = MONTHS[now.getMonth()] + ' ' + dd + sfx;
-  var dateHTML  = THEME_URL ? '<a href="' + THEME_URL + '">' + datePart + '</a>' : datePart;
+  var now  = new Date();
+  var dd   = now.getDate();
+  var mm   = now.getMonth() + 1;
+  var mmdd = String(mm).padStart(2, '0') + '-' + String(dd).padStart(2, '0');
+  var v    = dd % 100;
+  var sfx  = (v >= 11 && v <= 13) ? 'th'
+           : dd % 10 === 1 ? 'st'
+           : dd % 10 === 2 ? 'nd'
+           : dd % 10 === 3 ? 'rd' : 'th';
+
+  /* Find today's occasion (DAILY inlined by Eleventy in base layout) */
+  var OCCASIONS = (typeof DAILY !== 'undefined' && DAILY.occasions) ? DAILY.occasions : [];
+  var activeOccasion = null;
+  for (var i = 0; i < OCCASIONS.length; i++) {
+    var o = OCCASIONS[i];
+    if (mmdd >= o.start && mmdd <= o.end) { activeOccasion = o; break; }
+  }
+
+  /* Date always links to /today/ — occasion anchor if one is active */
+  var todayURL = '/today/' + (activeOccasion ? '#' + activeOccasion.id : '');
+  var datePart = MONTHS[now.getMonth()] + ' ' + dd + sfx;
+  var dateHTML = '<a href="' + todayURL + '">' + datePart + '</a>';
 
   var dateEl = document.getElementById('date-text');
   if (dateEl) {
     dateEl.innerHTML = '<span class="day-name">' + DAYS[now.getDay()] + '</span>, ' + dateHTML;
   }
 
-  /* ── Theme toggle ── */
-  var html     = document.documentElement;
-  var btnTheme = document.getElementById('btn-theme');
-  var iconSun  = document.getElementById('icon-sun');
-  var iconMoon = document.getElementById('icon-moon');
-  var iconHover = document.getElementById('icon-hover');
-
-  var MODES = ['light', 'dark'];
-
-  var NEXT_ICONS = {
-    'light': '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
-    'dark':  '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>'
-  };
-
-  function applyTheme(mode) {
-    html.setAttribute('data-theme', mode);
-    var dark = mode === 'dark';
-    iconSun.style.display  = dark ? 'none' : '';
-    iconMoon.style.display = dark ? '' : 'none';
-    if (iconHover && NEXT_ICONS[mode]) {
-      iconHover.innerHTML = NEXT_ICONS[mode];
-    }
-    btnTheme.title = dark ? 'Switch to light mode' : 'Switch to dark mode';
-    try { localStorage.setItem('kjo-theme', mode); } catch(e) {}
-  }
-
-  var saved = '';
-  try { saved = localStorage.getItem('kjo-theme') || ''; } catch(e) {}
-  applyTheme(saved === 'dark' ? 'dark' : 'light');
-
-  btnTheme.addEventListener('click', function () {
-    var current = html.getAttribute('data-theme') || 'light';
-    var idx = MODES.indexOf(current);
-    var next = MODES[(idx + 1) % MODES.length];
-    applyTheme(next);
-  });
-
   /* ── Accordion ── */
   var MOBILE_BP = 768;
   var accordion = document.getElementById('nav-accordion');
   var section   = document.getElementById('content-section');
+  if (!accordion || !section) return;
 
   function allItems() { return Array.from(accordion.querySelectorAll('.nav-item')); }
   function isMobile() { return window.innerWidth <= MOBILE_BP; }
@@ -83,7 +71,7 @@
     var snapshot = list.map(function(d) { return d.classList.contains('is-open'); });
 
     list.forEach(function(item) {
-      item.querySelector('.nav-body').style.transition = 'none';
+      item.querySelector('.nav-body').style.transition       = 'none';
       item.querySelector('.nav-body-inner').style.transition = 'none';
     });
 
@@ -98,7 +86,7 @@
     void section.offsetHeight;
 
     list.forEach(function(item) {
-      item.querySelector('.nav-body').style.transition = '';
+      item.querySelector('.nav-body').style.transition       = '';
       item.querySelector('.nav-body-inner').style.transition = '';
     });
 
