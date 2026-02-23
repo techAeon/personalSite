@@ -1,0 +1,111 @@
+<h1>Kieran J. O'Leary - Personal Website</h1>
+<p>A minimalist, typography-focused personal website built with Eleventy (11ty).</p>
+<h2>Design Features</h2>
+<ul>
+<li><strong>Minimalist aesthetic</strong> with artistic hand-drawn touches</li>
+<li><strong>Typography-first</strong> design using Playfair Display and Inter</li>
+<li><strong>Robin blue</strong> (#5DADE2) accent color</li>
+<li><strong>CSS-only effects</strong> - no heavy JavaScript</li>
+<li><strong>Mobile responsive</strong> layout</li>
+<li><strong>Tabbed homepage</strong> with interactive content switching</li>
+<li><strong>Charcoal sketch</strong> image effect on hover</li>
+</ul>
+<h2>Structure</h2>
+<pre><code>.
+├── _includes/          # Layout templates
+│   ├── base.njk       # Base HTML structure
+│   ├── post.njk       # Blog post layout
+│   └── project.njk    # Project page layout
+├── posts/             # Blog posts (Markdown)
+├── projects/          # Project pages (Markdown)
+├── css/               # Stylesheets
+├── images/            # Images and assets
+├── index.njk          # Homepage with tabs
+├── about.njk          # Full about page
+├── cv.njk             # Full CV page
+├── blog.njk           # Blog listing
+├── projects.njk       # Projects listing
+└── .eleventy.js       # Eleventy configuration
+</code></pre>
+<h2>Local Development</h2>
+<ol>
+<li>Install dependencies:</li>
+</ol>
+<pre><code class="language-bash">npm install
+</code></pre>
+<ol start="2">
+<li>Run development server:</li>
+</ol>
+<pre><code class="language-bash">npm start
+</code></pre>
+<ol start="3">
+<li>Build for production:</li>
+</ol>
+<pre><code class="language-bash">npm run build
+</code></pre>
+<p>Site will be available at <code>http://localhost:8080</code></p>
+<h2>Adding Content</h2>
+<h3>New Blog Post</h3>
+<p>Create a new <code>.md</code> file in <code>posts/</code>:</p>
+<pre><code class="language-markdown">---
+title: Your Post Title
+date: 2026-02-07
+excerpt: Short description for listings
+---
+
+Your content here in Markdown...
+</code></pre>
+<h3>New Project</h3>
+<p>Create a new <code>.md</code> file in <code>projects/</code>:</p>
+<pre><code class="language-markdown">---
+title: Project Name
+description: Short description for card
+date: 2026-02-07
+---
+
+Full project details in Markdown...
+</code></pre>
+<h2>Deployment</h2>
+<h3>Netlify</h3>
+<ol>
+<li>Push your code to GitHub</li>
+<li>Connect your repo to Netlify</li>
+<li>Build command: <code>npm run build</code></li>
+<li>Publish directory: <code>_site</code></li>
+</ol>
+<h3>Manual Deployment</h3>
+<p>Build the site and upload the <code>_site</code> folder to any static hosting service.</p>
+<h2>Customization</h2>
+<h3>Colors</h3>
+<p>Edit <code>css/style.css</code> root variables:</p>
+<pre><code class="language-css">:root {
+  --robin-blue: #5DADE2;
+  --charcoal: #2C2C2C;
+  --light-gray: #F5F5F5;
+}
+</code></pre>
+<h3>Fonts</h3>
+<p>Currently using Google Fonts (Playfair Display + Inter). Change in <code>css/style.css</code> @import and variables.</p>
+<h3>Homepage Content</h3>
+<p>Edit <code>index.njk</code> to update the About, CV, Projects, and Blog tab content.</p>
+<h2>Features</h2>
+<ul>
+<li>✅ Responsive design</li>
+<li>✅ Artistic CSS effects</li>
+<li>✅ Lightweight JavaScript (tabs only)</li>
+<li>✅ Blog with posts</li>
+<li>✅ Projects showcase</li>
+<li>✅ Full CV page</li>
+<li>✅ About page</li>
+<li>⬜ Dark mode (future)</li>
+<li>⬜ Search (future)</li>
+<li>⬜ RSS feed (future)</li>
+</ul>
+<h2>License</h2>
+<p>ISC</p>
+<h2>Contact</h2>
+<p>Kieran J. O'Leary</p>
+<ul>
+<li>Email: kieran.j.oleary@gmail.com</li>
+<li>Location: Munich, Germany &amp; Pittsburgh, PA</li>
+</ul>
