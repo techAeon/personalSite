@@ -170,15 +170,16 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .theme-btn:hover {
   border-color: var(--accent);
+  color: var(--accent);
   background: rgba(93,173,226,0.08);
 }
 
-.theme-btn:hover #icon-sun  { display: none !important; }
-.theme-btn:hover #icon-moon { display: none !important; }
-.theme-btn:hover #icon-hover { display: block !important; }
+/* On hover: hide current icon, reveal next-mode preview */
+.theme-btn:hover #icon-current { display: none; }
+.theme-btn:hover #icon-hover   { display: block !important; }
 
 [data-theme="dark"] .theme-btn { color: rgba(255,255,255,0.3); }
-.theme-btn:hover { color: var(--accent); background: rgba(93,173,226,0.08); }
+
 .theme-btn svg { width: 13px; height: 13px; }
 
 /* ── NAME ── */
