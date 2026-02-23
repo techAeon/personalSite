@@ -38,17 +38,19 @@
   };
 
   function applyMode(mode) {
-    /* ── KEY FIX ──
+    /* ── KEY RULE ──
        data-theme only ever gets 'light' or 'dark' — these are the only
        two values CSS knows about. 'occasion' is a logical mode that uses
-       light as its CSS base but overrides the accent colour.
+       light as its CSS base but overrides the accent colour and adds a
+       wallpaper background.
        We track the logical mode in localStorage separately.             */
     var isDark     = (mode === 'dark');
     var isOccasion = (mode === 'occasion');
 
+    /* 1. CSS theme: light or dark */
     html.setAttribute('data-theme', isDark ? 'dark' : 'light');
 
-    /* Accent colour */
+    /* 2. Accent colour */
     if (isOccasion && activeOccasion) {
       html.style.setProperty('--accent', activeOccasion.accent);
     } else if (isDark && activeOccasion) {
@@ -59,7 +61,14 @@
       html.style.removeProperty('--accent');
     }
 
-    /* Button icons */
+    /* 3. Occasion wallpaper — only in occasion mode */
+    if (isOccasion && activeOccasion) {
+      html.setAttribute('data-occasion', activeOccasion.id);
+    } else {
+      html.removeAttribute('data-occasion');
+    }
+
+    /* 4. Button icons */
     var iconCur   = document.getElementById('icon-current');
     var iconHover = document.getElementById('icon-hover');
     var btnTheme  = document.getElementById('btn-theme');
@@ -73,7 +82,7 @@
       btnTheme.setAttribute('aria-label', 'Switch to ' + nextMode + ' mode');
     }
 
-    /* Store the LOGICAL mode (light/dark/occasion) not data-theme */
+    /* 5. Store the LOGICAL mode (light/dark/occasion) not data-theme */
     try { localStorage.setItem('kjo-theme', mode); } catch(e) {}
   }
 

@@ -4,7 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ title or "Kieran J. O'Leary" }}</title>
+  <script>var DAILY = {{ daily | dump | safe }};</script>
+  <script>
+    (function () {
+      var t = '';
+      try { t = localStorage.getItem('kjo-theme') || ''; } catch(e) {}
+      if (t === 'dark' || t === 'occasion' || t === 'light') {
+        document.documentElement.setAttribute('data-theme', t);
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="{{ '/css/style.css' | url }}">
+  <script>
+    // FOUC prevention — set data-theme before first paint
+    (function(){
+      try {
+        var s = localStorage.getItem('kjo-theme') || 'light';
+        // data-theme only ever gets 'light' or 'dark'
+        if (s === 'dark') {
+          document.documentElement.setAttribute('data-theme','dark');
+        }
+        // occasion mode also needs its attribute for wallpaper
+        if (s === 'occasion') {
+          document.documentElement.setAttribute('data-theme','light');
+          document.documentElement.setAttribute('data-occasion','pending');
+        }
+      } catch(e){}
+    })();
+  </script>
 </head>
 <body>
 
