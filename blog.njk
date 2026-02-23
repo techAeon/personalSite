@@ -1,25 +1,50 @@
 ---
 layout: base.njk
-title: Blog - Kieran J. O'Leary
+title: Journal - Kieran J. O'Leary
 ---
 
 <div class="page-container">
-  <a href="/" class="back-link">← Home</a>
-  {% include "page-tabs.njk" %}
-  
+
   <header class="page-header">
-    <h1>Blog</h1>
+    <h1>Journal</h1>
   </header>
 
-  <div class="blog-list">
-    {% for post in collections.posts %}
-    <article class="blog-post">
-      <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
-      <p class="post-meta">{{ post.data.date | readableDate }}</p>
-      {% if post.data.excerpt %}
-      <p>{{ post.data.excerpt }}</p>
-      {% endif %}
-    </article>
-    {% endfor %}
+  {# ── Search bar ── #}
+  <div class="blog-search-bar">
+    <label for="blog-search" class="sr-only">Search posts</label>
+    <input
+      type="search"
+      id="blog-search"
+      name="q"
+      placeholder="Search posts&hellip;"
+      class="blog-search-input"
+      autocomplete="off"
+    >
+    <span class="blog-search-count" id="blog-search-count" aria-live="polite"></span>
   </div>
+
+  {# ── Post list ── #}
+  <div class="blog-list" id="blog-list">
+    {% if collections.posts.length > 0 %}
+      {% for post in collections.posts %}
+      <article class="blog-post"
+               data-title="{{ post.data.title | lower }}"
+               data-excerpt="{{ post.data.excerpt | lower if post.data.excerpt else '' }}">
+        <h2><a href="{{ post.url }}">{{ post.data.title }}</a></h2>
+        <p class="post-meta">{{ post.data.date | readableDate }}</p>
+        {% if post.data.excerpt %}
+        <p class="post-excerpt">{{ post.data.excerpt }}</p>
+        {% endif %}
+        <a href="{{ post.url }}" class="blog-post__read-link">Read post &rarr;</a>
+      </article>
+      {% endfor %}
+    {% else %}
+      <p class="blog-empty">No posts yet &mdash; check back soon.</p>
+    {% endif %}
+  </div>
+
+  <p class="blog-no-results" id="blog-no-results" aria-live="polite" role="status">
+    No posts match that search.
+  </p>
+
 </div>

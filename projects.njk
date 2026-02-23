@@ -3,20 +3,90 @@ layout: base.njk
 title: Projects - Kieran J. O'Leary
 ---
 
-<div class="page-container">
-  <a href="/" class="back-link">← Back to Home</a>
-  
+<div class="page-container page-container--wide">
+
   <header class="page-header">
     <h1>Projects</h1>
   </header>
 
-  <div class="project-grid">
-    {% for project in collections.projects %}
-    <div class="project-card">
-      <h3>{{ project.data.title }}</h3>
-      <p>{{ project.data.description }}</p>
-      <a href="{{ project.url }}">Learn more →</a>
+  {# ── Featured / hero project — iterate and render any with featured: true ── #}
+  {% for project in collections.projects %}
+  {% if project.data.featured %}
+
+  <section class="project-hero" aria-label="Featured project">
+    <div class="project-hero-card">
+
+      <div class="project-hero-visual" aria-hidden="true">
+        <div class="project-hero-visual__label">{{ project.data.title }}</div>
+      </div>
+
+      <div class="project-hero-body">
+        {% if project.data.status %}
+        <span class="project-status">{{ project.data.status }}</span>
+        {% endif %}
+
+        <h2 class="project-hero-title">{{ project.data.title }}</h2>
+        <p class="project-hero-desc">{{ project.data.description }}</p>
+
+        {% if project.data.stack %}
+        <div class="project-tags" aria-label="Technology stack">
+          {% for tag in project.data.stack %}
+          <span class="project-tag">{{ tag }}</span>
+          {% endfor %}
+        </div>
+        {% endif %}
+
+        <a href="{{ project.url }}" class="project-hero-link">
+          Read more
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </a>
+      </div>
+
     </div>
-    {% endfor %}
+  </section>
+
+  {% endif %}
+  {% endfor %}
+
+  {# ── Non-featured projects grid ── #}
+  {% if collections.projects | length > 1 %}
+  <section class="projects-grid-section">
+    <p class="projects-grid-heading">More Projects</p>
+    <div class="project-grid">
+      {% for project in collections.projects %}
+      {% if not project.data.featured %}
+      <div class="project-card">
+        <div class="project-card__visual" aria-hidden="true"></div>
+        <div class="project-card__body">
+          {% if project.data.status %}
+          <span class="project-status project-status--sm">{{ project.data.status }}</span>
+          {% endif %}
+          <h3>{{ project.data.title }}</h3>
+          <p>{{ project.data.description }}</p>
+          {% if project.data.stack %}
+          <div class="project-tags">
+            {% for tag in project.data.stack %}
+            <span class="project-tag">{{ tag }}</span>
+            {% endfor %}
+          </div>
+          {% endif %}
+          <a href="{{ project.url }}" class="more-btn">Read more &rarr;</a>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+
+  {# ── Teaser note when there's only one project ── #}
+  {% if collections.projects | length <= 1 %}
+  <div class="projects-coming-soon">
+    <p>More projects in the works &mdash; <a href="{{ '/blog' | url }}">check the journal</a> for updates.</p>
   </div>
+  {% endif %}
+
 </div>
