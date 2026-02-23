@@ -188,17 +188,26 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .portrait-wrapper::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
-  background-size: 6px 6px;
-  /* Fade the dot field itself so dots dissolve upward */
-  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
-  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  position: absolute; bottom: -26px; left: 0; right: 0;
+  height: 190px;
+  background-image:
+    radial-gradient(circle, var(--accent) 2px, transparent 2.8px),
+    linear-gradient(to bottom, transparent 0%, var(--accent) 90%);
+  background-size: 12px 12px, 100% 100%;
+  background-position: 0 0, 0 0;
+  /* Fade the matrix so the transition into the accent field feels gradual. */
+  -webkit-mask-image: linear-gradient(to top, transparent 0%, rgba(0,0,0,0.35) 35%, black 100%);
+  mask-image: linear-gradient(to top, transparent 0%, rgba(0,0,0,0.35) 35%, black 100%);
   pointer-events: none;
+  z-index: 2;
 }
 
-.image-fill { flex: 1; background: var(--accent); }
+.image-fill {
+  flex: 1;
+  background:
+    radial-gradient(circle at 15% 0, rgba(255,255,255,0.18) 0, rgba(255,255,255,0) 55%),
+    var(--accent);
+}
 
 /* ── CONTENT COLUMN ── */
 .content-section {
