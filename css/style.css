@@ -110,7 +110,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .portrait-wrapper::after {
   content: '';
   position: absolute; bottom: 0; left: 0; right: 0; 
-  height: 60px; /* Taller gradient */
+  height: 20px; /* Taller gradient */
   background: linear-gradient(
     to bottom, 
     rgba(93, 173, 226, 0) 0%,      /* Fully transparent at top */
