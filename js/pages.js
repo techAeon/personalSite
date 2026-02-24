@@ -87,17 +87,31 @@
   }
 
 
-  /* ── Footer search: navigate to blog with query ─────────────────────── */
-  var footerSearch = document.getElementById('site-search');
-  if (footerSearch) {
-    footerSearch.addEventListener('keydown', function (e) {
-      if (e.key === 'Enter' && this.value.trim()) {
-        e.preventDefault();
-        window.location.href = '/blog/?q=' + encodeURIComponent(this.value.trim());
-      }
+
+
+  /* ── About page: Important-date theme buttons ─────────────────────────── */
+  var dateThemeButtons = document.querySelectorAll('.date-theme-btn');
+  if (dateThemeButtons.length) {
+    dateThemeButtons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var mode = btn.getAttribute('data-mode') || 'light';
+        var occasionId = btn.getAttribute('data-occasion-id');
+        var occasionAccent = btn.getAttribute('data-occasion-accent');
+
+        document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
+
+        if (mode === 'occasion' && occasionId) {
+          document.documentElement.setAttribute('data-occasion', occasionId);
+          if (occasionAccent) document.documentElement.style.setProperty('--accent', occasionAccent);
+          try { localStorage.setItem('kjo-theme', 'occasion'); } catch(e) {}
+        } else {
+          document.documentElement.removeAttribute('data-occasion');
+          document.documentElement.style.removeProperty('--accent');
+          try { localStorage.setItem('kjo-theme', mode); } catch(e) {}
+        }
+      });
     });
   }
-
 
   /* ── Blog: read ?q= param on page load and pre-fill search ──────────── */
   if (searchInput) {

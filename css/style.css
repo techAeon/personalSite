@@ -8,7 +8,7 @@
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Inter', -apple-system, system-ui, sans-serif;
   --box-max-width: 1000px;
-  --portrait-h: 460px;
+  --portrait-h: 560px;
   --bg: #ffffff;
   --surface: #ffffff;
   --text: #2C2C2C;
@@ -34,6 +34,7 @@ body {
   background-image: none;
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-y: scroll;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -188,17 +189,26 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .portrait-wrapper::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
-  background-size: 6px 6px;
-  /* Fade the dot field itself so dots dissolve upward */
-  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
-  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 276px;
+  /* Horizontal lines: thinner/farther at top, thicker/closer toward bottom. */
+  background-image:
+    linear-gradient(to bottom, transparent 0 56px, color-mix(in srgb, var(--accent) 28%, transparent) 56px 57px, transparent 57px 100%),
+    linear-gradient(to bottom, transparent 0 74px, color-mix(in srgb, var(--accent) 38%, transparent) 74px 76px, transparent 76px 100%),
+    linear-gradient(to bottom, transparent 0 94px, color-mix(in srgb, var(--accent) 50%, transparent) 94px 97px, transparent 97px 100%),
+    linear-gradient(to bottom, transparent 0 112px, color-mix(in srgb, var(--accent) 62%, transparent) 112px 116px, transparent 116px 100%),
+    linear-gradient(to bottom, transparent 0 130px, color-mix(in srgb, var(--accent) 74%, transparent) 130px 135px, transparent 135px 100%),
+    linear-gradient(to bottom, transparent 0 148px, color-mix(in srgb, var(--accent) 85%, transparent) 148px 154px, transparent 154px 100%),
+    linear-gradient(to bottom, transparent 0 166px, var(--accent) 166px 173px, transparent 173px 100%),
+    linear-gradient(to bottom, transparent 0%, var(--accent) 94%);
   pointer-events: none;
+  z-index: 2;
 }
 
-.image-fill { flex: 1; background: var(--accent); }
+.image-fill {
+  flex: 1;
+  background: var(--accent);
+}
 
 /* ── CONTENT COLUMN ── */
 .content-section {
@@ -314,7 +324,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .nav-item.is-open .chevron { transform: rotate(90deg); }
 
-.nav-label { flex: 1; }
+.nav-label { flex: 1; font-weight: 600; }
 
 .nav-link {
   flex-shrink: 0; display: flex; align-items: center; justify-content: center;
@@ -322,6 +332,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   text-decoration: none; border-radius: 3px;
   transition: color 0.2s ease, background 0.2s ease;
   pointer-events: auto;
+  margin-right: 0.35rem;
 }
 
 .nav-link {
@@ -744,7 +755,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .site-header__link.is-active { color: var(--text); border-bottom-color: var(--accent); }
 
 /* ── Site footer (inner pages) ── */
-.site-footer { padding: 0 2rem; }
+.site-footer { width: 100%; padding: 0 2rem; }
+.home-wrapper > .site-footer {
+  max-width: var(--box-max-width);
+  width: 100%;
+  padding: 0.75rem 0.25rem 0;
+  align-self: center;
+}
+.home-wrapper > .site-footer .home-footer { margin: 0 auto; }
 .site-footer .home-footer { margin: 0 auto; }
 
 /* ═══════════════════════════════════════════════
@@ -1301,3 +1319,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   h1, h2, h3 { page-break-after: avoid; }
   .cv-entry, .print-entry { page-break-inside: avoid; }
 }
+
+
+.date-theme-buttons { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+.date-theme-btn { border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.72rem; cursor: pointer; }
+.date-theme-btn:hover { border-color: var(--accent); color: var(--accent); }

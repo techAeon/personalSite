@@ -15,8 +15,8 @@
     if (mmdd >= o.start && mmdd <= o.end) { activeOccasion = o; break; }
   }
 
-  /* light → dark → occasion (if active) → back to light */
-  var MODES = activeOccasion ? ['light', 'dark', 'occasion'] : ['light', 'dark'];
+  /* Occasion day cycle: occasion → light → dark → occasion */
+  var MODES = activeOccasion ? ['occasion', 'light', 'dark'] : ['light', 'dark'];
 
   var ICONS = {
     'light':
@@ -50,12 +50,10 @@
     /* 1. CSS theme: light or dark */
     html.setAttribute('data-theme', isDark ? 'dark' : 'light');
 
-    /* 2. Accent colour */
+    /* 2. Accent colour
+       Occasion is the only mode that overrides the accent.
+       Light + dark use the default robin-blue from CSS. */
     if (isOccasion && activeOccasion) {
-      html.style.setProperty('--accent', activeOccasion.accent);
-    } else if (isDark && activeOccasion) {
-      html.style.setProperty('--accent', activeOccasion.accent_dark || activeOccasion.accent);
-    } else if (!isDark && activeOccasion) {
       html.style.setProperty('--accent', activeOccasion.accent);
     } else {
       html.style.removeProperty('--accent');
@@ -103,7 +101,7 @@
   /* ── Initial load ── */
   var saved = '';
   try { saved = localStorage.getItem('kjo-theme') || ''; } catch(e) {}
-  var initial = (MODES.indexOf(saved) !== -1) ? saved : 'light';
+  var initial = (MODES.indexOf(saved) !== -1) ? saved : (activeOccasion ? 'occasion' : 'light');
   applyMode(initial);
 
   if (document.readyState === 'loading') {
