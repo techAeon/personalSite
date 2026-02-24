@@ -8,7 +8,7 @@
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Inter', -apple-system, system-ui, sans-serif;
   --box-max-width: 1000px;
-  --portrait-h: 460px;
+  --portrait-h: 560px;
   --bg: #ffffff;
   --surface: #ffffff;
   --text: #2C2C2C;
@@ -188,17 +188,26 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .portrait-wrapper::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
-  background-size: 6px 6px;
-  /* Fade the dot field itself so dots dissolve upward */
-  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
-  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 220px;
+  /* Dot matrix: starts lighter/smaller at top, ends larger/solid at bottom. */
+  background-image:
+    radial-gradient(circle, color-mix(in srgb, var(--accent) 30%, transparent) 1px, transparent 1.9px),
+    radial-gradient(circle, color-mix(in srgb, var(--accent) 55%, transparent) 2px, transparent 3px),
+    radial-gradient(circle, var(--accent) 3px, transparent 4.3px),
+    linear-gradient(to bottom, transparent 0%, var(--accent) 92%);
+  background-size: 8px 8px, 12px 12px, 18px 18px, 100% 100%;
+  background-position: 0 0, 1px 44px, 2px 118px, 0 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 28%, rgba(0,0,0,0.78) 64%, black 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.35) 28%, rgba(0,0,0,0.78) 64%, black 100%);
   pointer-events: none;
+  z-index: 2;
 }
 
-.image-fill { flex: 1; background: var(--accent); }
+.image-fill {
+  flex: 1;
+  background: var(--accent);
+}
 
 /* ── CONTENT COLUMN ── */
 .content-section {
@@ -744,7 +753,9 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .site-header__link.is-active { color: var(--text); border-bottom-color: var(--accent); }
 
 /* ── Site footer (inner pages) ── */
-.site-footer { padding: 0 2rem; }
+.site-footer { width: 100%; padding: 0 2rem; }
+.home-wrapper > .site-footer { max-width: var(--box-max-width); padding: 0.75rem 0.25rem 0; align-self: stretch; }
+.home-wrapper > .site-footer .home-footer { margin: 0; }
 .site-footer .home-footer { margin: 0 auto; }
 
 /* ═══════════════════════════════════════════════
