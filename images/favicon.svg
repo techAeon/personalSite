@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="KOL favicon">
-  <rect width="64" height="64" rx="12" fill="#2C2C2C"/>
-  <path d="M15 16v32h6V36l10 12h8L27 33l11-17h-7l-10 15V16z" fill="#5DADE2"/>
-  <path d="M42 16v32h7c8 0 14-6 14-16s-6-16-14-16zm7 6c4 0 7 4 7 10s-3 10-7 10h-1V22z" fill="#ffffff"/>
-  <path d="M46 14h4v34h-4z" fill="#5DADE2" opacity="0.9"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="K favicon">
+  <rect width="64" height="64" rx="12" fill="#5DADE2"/>
+  <text x="50%" y="53%" text-anchor="middle" dominant-baseline="middle"
+        fill="#ffffff" font-family="'Playfair Display', Georgia, serif"
+        font-size="38" font-weight="700">K</text>
 </svg>
