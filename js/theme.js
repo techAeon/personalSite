@@ -56,6 +56,7 @@
     if (isOccasion && activeOccasion) {
       html.style.setProperty('--accent', activeOccasion.accent);
     } else {
+      /* In normal light mode, always fall back to the default robin-blue accent from CSS. */
       html.style.removeProperty('--accent');
     }
 
