@@ -4,31 +4,28 @@
 /* ===== ROOT VARIABLES ===== */
 :root {
   --accent: #5DADE2;
-  --accent-text: #2e6b94; /* Added: Darker blue for readable text on white */
-  --charcoal: #2C2C2C;
+  --accent-text: #2e6b94;
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Inter', -apple-system, system-ui, sans-serif;
   --box-max-width: 1000px;
   --portrait-h: 560px;
   --bg: #ffffff;
   --surface: #ffffff;
+  --surface-translucent: rgba(255, 255, 255, 0.85); /* 85% white */
   --text: #2C2C2C;
   --text-muted: #888;
   --border: rgba(44,44,44,0.08);
-  --surface-translucent: rgba(255, 255, 255, 0.85); /* 85% opaque white */
 }
 
 [data-theme="dark"] {
   --accent: #5DADE2;
-  --accent-text: #5DADE2; /* Added: Bright blue is perfect on dark gray
-  --accent-muted: #2e6b94;
+  --accent-text: #5DADE2;
   --bg: #2a2a2e;
   --surface: #32323a;
+  --surface-translucent: rgba(50, 50, 58, 0.85); /* 85% dark gray */
   --text: #f0f0f0;
   --text-muted: #a8a8b0;
   --border: rgba(255,255,255,0.12);
-  --charcoal: #f0f0f0;
-  --surface-translucent: rgba(50, 50, 58, 0.85); /* 85% opaque dark gray */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -293,15 +290,13 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .welcome { margin-bottom: 1.5rem; }
 
 .welcome h2 { 
-  font-size: 1.4rem; 
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.5rem; 
+  text-align: left;
   margin-bottom: 0.4rem; 
-  color: var(--text);
-  
-  /* Add these lines to override the serif default: */
-  font-family: var(--sans);
-  font-weight: 500; /* 500 looks great for a sans-serif tagline without being too heavy */
-  line-height: 1.4; /* Slightly looser line-height since it might wrap to two lines */
-  letter-spacing: -0.01em; /* A tiny bit of negative tracking makes modern sans-serifs look premium */
+  color: var(--text); 
+  line-height: 1.3;
 }
 
 .welcome p { font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); }
@@ -452,11 +447,12 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 /* ── FOOTER ── */
 .home-footer {
-  max-width: var(--box-max-width); width: 100%;
+  max-width: var(--box-max-width); 
+  width: 100%;
   display: flex; align-items: center; gap: 1rem;
   padding: 0.75rem 0.25rem;
-  border-top: 1px solid rgba(44,44,44,0.12);
-  background: transparent;
+  border-top: 1px solid var(--border);
+  background: transparent; /* Forces it to let the parent's frosted glass show */
 }
 
 /* Fix the homepage footer over occasion wallpapers */
@@ -526,6 +522,11 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
     border-right: 8px solid var(--accent); 
     border-left: 0; 
   }
+  .site-header, .site-footer, .page-container {
+    max-width: 100%;
+    margin: 0;
+    border-radius: 0;
+  }
   .image-section { position: static; max-height: none; }
 
   .portrait { height: 260px; max-height: 260px; }
@@ -541,8 +542,10 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   .chevron { display: none; }
 
   .home-footer {
-    flex-wrap: wrap; padding: 1rem 1.5rem 2rem;
-    gap: 0.75rem; border-top: 2px solid var(--text);
+    flex-wrap: wrap; 
+    padding: 1rem 1.5rem 2rem;
+    gap: 0.75rem; 
+    border-top: 1px solid var(--border); /* Softens the line, removes the black curve */
   }
 
   .home-footer__search { flex: 1 1 100%; }
@@ -606,13 +609,13 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 /* ===== OTHER PAGES ===== */
 .page-container {
-  max-width: 900px; /* Keeps the text width comfortable */
+  max-width: 900px;
   margin: 0 auto;
   padding: 4rem 2rem;
   background: var(--surface-translucent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 6px; /* Optional: rounds the corners slightly */
+  border-radius: 6px;
 }
 
 .page-header {
@@ -848,13 +851,13 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 /* Inner Page Header */
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  max-width: 1040px; /* Slightly wider than the content */
-  margin: 0 auto;    /* Centers it on the screen */
+  max-width: 960px; /* Slightly wider than the 900px content */
+  margin: 1rem auto 0; /* Centers it and adds a small gap at the top */
   background: var(--surface-translucent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
-  border-radius: 0 0 6px 6px; 
+  border-radius: 6px 6px 0 0;
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
@@ -886,13 +889,13 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 /* Inner Page Footer */
 .site-footer {
-  max-width: 1040px;
-  margin: 0 auto;
+  max-width: 960px; /* Matches header width */
+  margin: 0 auto 2rem; /* Centers it and adds a gap at the bottom */
+  padding: 0 2rem;
   background: var(--surface-translucent);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border-radius: 6px 6px 0 0;
-  padding: 0 2rem;
+  border-radius: 0 0 6px 6px;
 }
 
 .home-wrapper > .site-footer {
@@ -900,6 +903,10 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   width: 100%;
   padding: 0.75rem 0.25rem 0;
   align-self: center;
+  background: transparent; 
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-radius: 0;
 }
 .home-wrapper > .site-footer .home-footer { margin: 0 auto; }
 .site-footer .home-footer { margin: 0 auto; }
@@ -944,15 +951,12 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .about-toc { display: flex; flex-direction: column; }
 
-.about-toc__link {
-  display: flex; align-items: center; gap: 0.6rem;
-  padding: 0.55rem 0.6rem;
-  font-family: var(--sans); font-size: 0.85rem;
-  color: var(--text-muted); text-decoration: none;
-  border-left: 2px solid transparent;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-  border-radius: 0 3px 3px 0;
+.about-toc__link svg { 
+  color: var(--accent); 
+  flex-shrink: 0; 
+  stroke-width: 2.5px; /* Here is where it belongs! */
 }
+
 .about-toc__link:hover {
   color: var(--text);
   border-left-color: var(--accent);
@@ -1457,10 +1461,12 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   .about-intro { grid-template-columns: 1fr; gap: 1.5rem; }
   .about-sidebar { position: static; }
   .about-toc { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
-  .about-toc__link svg { 
-      color: var(--accent); 
-      flex-shrink: 0; 
-      stroke-width: 2.5px; 
+ .about-toc__link {
+    border-left: none; 
+    border: 1px solid var(--border);
+    border-radius: 3px; 
+    padding: 0.4rem 0.6rem; 
+    font-size: 0.8rem;
   }
   .about-toc__link:hover { border-color: var(--accent); background: rgba(93,173,226,0.06); }
 
