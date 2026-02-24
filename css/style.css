@@ -4,6 +4,7 @@
 /* ===== ROOT VARIABLES ===== */
 :root {
   --accent: #5DADE2;
+  --accent-text: #2e6b94; /* Added: Darker blue for readable text on white */
   --charcoal: #2C2C2C;
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Inter', -apple-system, system-ui, sans-serif;
@@ -14,10 +15,12 @@
   --text: #2C2C2C;
   --text-muted: #888;
   --border: rgba(44,44,44,0.08);
+  --surface-translucent: rgba(255, 255, 255, 0.85); /* 85% opaque white */
 }
 
 [data-theme="dark"] {
   --accent: #5DADE2;
+  --accent-text: #5DADE2; /* Added: Bright blue is perfect on dark gray
   --accent-muted: #2e6b94;
   --bg: #2a2a2e;
   --surface: #32323a;
@@ -25,6 +28,7 @@
   --text-muted: #a8a8b0;
   --border: rgba(255,255,255,0.12);
   --charcoal: #f0f0f0;
+  --surface-translucent: rgba(50, 50, 58, 0.85); /* 85% opaque dark gray */
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -115,12 +119,6 @@ body {
 [data-occasion] .home-box,
 [data-occasion] .page-container {
   position: relative;
-}
-
-[data-occasion] .page-container {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.06);
 }
 
 h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-height: 1.2; }
@@ -293,8 +291,21 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 /* ── WELCOME ── */
 .welcome { margin-bottom: 1.5rem; }
-.welcome h2 { font-size: 1.4rem; margin-bottom: 0.4rem; color: var(--text); }
+
+.welcome h2 { 
+  font-size: 1.4rem; 
+  margin-bottom: 0.4rem; 
+  color: var(--text);
+  
+  /* Add these lines to override the serif default: */
+  font-family: var(--sans);
+  font-weight: 500; /* 500 looks great for a sans-serif tagline without being too heavy */
+  line-height: 1.4; /* Slightly looser line-height since it might wrap to two lines */
+  letter-spacing: -0.01em; /* A tiny bit of negative tracking makes modern sans-serifs look premium */
+}
+
 .welcome p { font-size: 0.95rem; line-height: 1.75; color: var(--text-muted); }
+
 
 /* ── WHERE TO START ── */
 .where-to-start { padding-top: 0.1rem; }
@@ -433,7 +444,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 }
 
 .more-btn {
-  display: inline-block; color: var(--accent); font-family: var(--sans);
+  display: inline-block; color: var(--accent-text);font-family: var(--sans);
   font-size: 0.8rem; text-decoration: none; margin-top: 0.3rem; transition: opacity 0.2s;
 }
 
@@ -448,15 +459,15 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   background: transparent;
 }
 
-[data-theme="dark"] .home-footer { border-color: rgba(255,255,255,0.12); }
-
+/* Fix the homepage footer over occasion wallpapers */
 [data-occasion] .home-footer {
-  background: var(--surface);
+  background: var(--surface-translucent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px;
 }
 
-[data-occasion] .site-footer {
-  background: var(--surface);
-}
+[data-theme="dark"] .home-footer { border-color: rgba(255,255,255,0.12); }
 
 .home-footer__search { flex: 0 0 auto; }
 
@@ -503,8 +514,18 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   }
 
   .home-box::before, .home-box::after { display: block; width: 24px; height: 24px; }
-  .home-box::before { top: 0; right: 0; left: auto; border-top: 8px solid var(--accent); border-right: 8px solid var(--accent); border-left: 0; }
-  .home-box::after { bottom: 0; left: 0; right: auto; border-bottom: 8px solid var(--accent); border-left: 8px solid var(--accent); border-right: 0; }
+  .home-box::before { 
+    top: 0; left: 0; right: auto; 
+    border-top: 8px solid var(--accent); 
+    border-left: 8px solid var(--accent); 
+    border-right: 0; 
+  }
+  .home-box::after { 
+    bottom: 0; right: 0; left: auto; 
+    border-bottom: 8px solid var(--accent); 
+    border-right: 8px solid var(--accent); 
+    border-left: 0; 
+  }
   .image-section { position: static; max-height: none; }
 
   .portrait { height: 260px; max-height: 260px; }
@@ -585,10 +606,13 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 /* ===== OTHER PAGES ===== */
 .page-container {
-  max-width: 900px;
+  max-width: 900px; /* Keeps the text width comfortable */
   margin: 0 auto;
   padding: 4rem 2rem;
-  background: var(--surface);
+  background: var(--surface-translucent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px; /* Optional: rounds the corners slightly */
 }
 
 .page-header {
@@ -748,12 +772,64 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   margin-bottom: 1rem;
 }
 
+/* ── BLOG POST FORMATTING ── */
 .post-content {
   line-height: 1.8;
+  font-size: 1.05rem;
+  color: var(--text);
 }
 
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Headings */
+.post-content h2, 
+.post-content h3, 
+.post-content h4 {
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+}
+
+.post-content h2 { 
+  font-size: 1.8rem; 
+  border-bottom: 1px solid var(--border); 
+  padding-bottom: 0.5rem; 
+}
+.post-content h3 { font-size: 1.4rem; }
+
+/* Lists */
+.post-content ul, 
+.post-content ol {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+}
+.post-content li { margin-bottom: 0.5rem; }
+
+/* Blockquotes */
+.post-content blockquote {
+  border-left: 4px solid var(--accent);
+  padding-left: 1rem;
+  margin-left: 0;
+  margin-bottom: 1.5rem;
+  font-style: italic;
+  color: var(--text-muted);
+}
+
+/* Links */
 .post-content a {
-  color: var(--accent);
+  color: var(--accent-text);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Images */
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin: 1.5rem 0;
 }
 
 @media (max-width: 768px) {
@@ -769,10 +845,16 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 /* ═══════════════════════════════════════════════
    SITE HEADER (inner pages)
 ═══════════════════════════════════════════════ */
+/* Inner Page Header */
 .site-header {
   position: sticky; top: 0; z-index: 100;
-  background: var(--surface);
+  max-width: 1040px; /* Slightly wider than the content */
+  margin: 0 auto;    /* Centers it on the screen */
+  background: var(--surface-translucent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--border);
+  border-radius: 0 0 6px 6px; 
   transition: background 0.3s ease, border-color 0.3s ease;
 }
 
@@ -802,8 +884,17 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .site-header__link:hover { color: var(--text); }
 .site-header__link.is-active { color: var(--text); border-bottom-color: var(--accent); }
 
-/* ── Site footer (inner pages) ── */
-.site-footer { width: 100%; padding: 0 2rem; }
+/* Inner Page Footer */
+.site-footer {
+  max-width: 1040px;
+  margin: 0 auto;
+  background: var(--surface-translucent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 6px 6px 0 0;
+  padding: 0 2rem;
+}
+
 .home-wrapper > .site-footer {
   max-width: var(--box-max-width);
   width: 100%;
@@ -831,7 +922,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   font-size: 0.975rem; line-height: 1.8;
   color: var(--text-muted); margin-bottom: 1.1rem;
 }
-.about-bio p a { color: var(--accent); text-decoration: none; }
+.about-bio p a { color: var(--accent-text); text-decoration: none; }
 .about-bio p a:hover { text-decoration: underline; }
 .about-bio .page-header { margin-bottom: 1.5rem; }
 
@@ -1114,7 +1205,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .project-hero-visual__label {
   position: relative; z-index: 1;
   font-family: var(--serif); font-size: 2rem; font-weight: 600;
-  color: rgba(255,255,255,0.25); letter-spacing: 0.04em;
+  color: rgba(255, 255, 255, 0.9); /* Bumped from 0.25 */
+  letter-spacing: 0.04em;
   pointer-events: none; user-select: none;
 }
 
@@ -1253,7 +1345,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .blog-empty { color: var(--text-muted); font-style: italic; }
 
 .blog-post__read-link {
-  display: inline-block; color: var(--accent);
+  display: inline-block; color: var(--accent-text);
   font-family: var(--sans); font-size: 0.8rem;
   text-decoration: none; margin-top: 0.5rem;
   transition: opacity 0.2s;
@@ -1365,9 +1457,10 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   .about-intro { grid-template-columns: 1fr; gap: 1.5rem; }
   .about-sidebar { position: static; }
   .about-toc { flex-direction: row; flex-wrap: wrap; gap: 0.5rem; }
-  .about-toc__link {
-    border-left: none; border: 1px solid var(--border);
-    border-radius: 3px; padding: 0.4rem 0.6rem; font-size: 0.8rem;
+  .about-toc__link svg { 
+      color: var(--accent); 
+      flex-shrink: 0; 
+      stroke-width: 2.5px; 
   }
   .about-toc__link:hover { border-color: var(--accent); background: rgba(93,173,226,0.06); }
 
