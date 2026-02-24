@@ -19,7 +19,7 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="/personalSite/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <script>
     // FOUC prevention — set data-theme before first paint
     (function(){
@@ -45,7 +45,7 @@
   <header class="site-header">
     <div class="site-header__inner">
 
-      <a href="/personalSite/" class="site-header__home" title="Home">
+      <a href="/" class="site-header__home" title="Home">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2"
              stroke-linecap="round" stroke-linejoin="round">
@@ -55,11 +55,11 @@
       </a>
 
       <nav class="site-header__nav">
-        <a href="/personalSite/about"
+        <a href="/about"
            class="site-header__link">About Me</a>
-        <a href="/personalSite/projects"
+        <a href="/projects"
            class="site-header__link is-active">Projects</a>
-        <a href="/personalSite/blog"
+        <a href="/blog"
            class="site-header__link">Journal</a>
       </nav>
 
@@ -135,15 +135,78 @@
 
   
   
-
+  
+  
   
   
 
   
   
-  <div class="projects-coming-soon">
-    <p>More projects in the works &mdash; <a href="/personalSite/blog">check the journal</a> for updates.</p>
-  </div>
+  <section class="projects-grid-section">
+    <p class="projects-grid-heading">More Projects</p>
+    <div class="project-grid">
+      
+      
+      
+      
+      <div class="project-card">
+        <div class="project-card__visual" aria-hidden="true"></div>
+        <div class="project-card__body">
+          
+          <span class="project-status project-status--sm">Drafting</span>
+          
+          <h3>3pps.info</h3>
+          <p>An information website dedicated to third-party preissuance submissions, timelines, and strategy</p>
+          
+          <div class="project-tags">
+            
+            <span class="project-tag">Eleventy</span>
+            
+            <span class="project-tag">Nunjucks</span>
+            
+            <span class="project-tag">Vanilla JS</span>
+            
+            <span class="project-tag">USPTO Data</span>
+            
+          </div>
+          
+          <a href="/projects/3pps-info/" class="more-btn">Read more &rarr;</a>
+        </div>
+      </div>
+      
+      
+      
+      <div class="project-card">
+        <div class="project-card__visual" aria-hidden="true"></div>
+        <div class="project-card__body">
+          
+          <span class="project-status project-status--sm">Prototype</span>
+          
+          <h3>whos62</h3>
+          <p>A celebrity age/height/fact guessing game with daily challenges</p>
+          
+          <div class="project-tags">
+            
+            <span class="project-tag">TypeScript</span>
+            
+            <span class="project-tag">Svelte</span>
+            
+            <span class="project-tag">Supabase</span>
+            
+            <span class="project-tag">Cloudflare Pages</span>
+            
+          </div>
+          
+          <a href="/projects/whos62/" class="more-btn">Read more &rarr;</a>
+        </div>
+      </div>
+      
+      
+    </div>
+  </section>
+  
+
+  
   
 
 </div>
@@ -159,9 +222,9 @@
   </div>
 
   <nav class="home-footer__nav">
-    <a href="/personalSite/about">About</a>
-    <a href="/personalSite/projects">Projects</a>
-    <a href="/personalSite/blog">Journal</a>
+    <a href="/about">About</a>
+    <a href="/projects">Projects</a>
+    <a href="/blog">Journal</a>
   </nav>
 
   <div class="home-footer__contact">
@@ -188,10 +251,11 @@
 
   </footer>
   
-  <script src="/personalSite/js/theme.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/footer-search.js"></script>
   
   
-  <script src="/personalSite/js/pages.js"></script>
+  <script src="/js/pages.js"></script>
   
 
 </body>

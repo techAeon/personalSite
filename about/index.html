@@ -19,7 +19,7 @@
       }
     })();
   </script>
-  <link rel="stylesheet" href="/personalSite/css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
   <script>
     // FOUC prevention — set data-theme before first paint
     (function(){
@@ -45,7 +45,7 @@
   <header class="site-header">
     <div class="site-header__inner">
 
-      <a href="/personalSite/" class="site-header__home" title="Home">
+      <a href="/" class="site-header__home" title="Home">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
              stroke="currentColor" stroke-width="2"
              stroke-linecap="round" stroke-linejoin="round">
@@ -55,11 +55,11 @@
       </a>
 
       <nav class="site-header__nav">
-        <a href="/personalSite/about"
+        <a href="/about"
            class="site-header__link is-active">About Me</a>
-        <a href="/personalSite/projects"
+        <a href="/projects"
            class="site-header__link">Projects</a>
-        <a href="/personalSite/blog"
+        <a href="/blog"
            class="site-header__link">Journal</a>
       </nav>
 
@@ -100,7 +100,7 @@
 
       <p>Outside the office, you'll find me on the rugby pitch playing second row, in the kitchen working through a new recipe, or somewhere in the middle of a German lesson. My rescue Galgo — a retired racer from Spain — is my perpetual companion and a daily reminder that good outcomes require patience and consistency, whether you're writing a patent claim or teaching a dog to sit.</p>
 
-      <p>I'm also a builder of sorts. My current side project, <a href="/personalSite/projects">Pulverhorn</a>, is a preissuance submission service for anonymous USPTO filings — built for inventors who have something worth saying but good reasons for saying it quietly. There's always something on the workbench.</p>
+      <p>I'm also a builder of sorts. My current side project, <a href="/projects">Pulverhorn</a>, is a preissuance submission service for anonymous USPTO filings — built for inventors who have something worth saying but good reasons for saying it quietly. There's always something on the workbench.</p>
     </div>
 
     
@@ -232,6 +232,7 @@
   <section id="important-dates" class="about-section">
     <h2>Important Dates</h2>
     <p class="about-section__intro">A few dates on the calendar that carry particular meaning — mostly because of what they represent at the intersection of law, history, and place.</p>
+    <p class="about-section__intro">Use the buttons below each date to preview light, dark, or that date's occasion accent.</p>
     <div class="occasions-list">
       
         
@@ -249,6 +250,12 @@
               
             </p>
             <p class="occasion-factoid">The original 3,000 cherry trees planted along the Tidal Basin were a gift from Tokyo Mayor Yukio Ozaki in 1912 — offered without intellectual property conditions of any kind.</p>
+            
+            <div class="date-theme-buttons">
+              <button type="button" class="date-theme-btn" data-mode="light" data-occasion-id="cherry-blossom" data-occasion-accent="#C9718A">Light</button>
+              <button type="button" class="date-theme-btn" data-mode="dark" data-occasion-id="cherry-blossom" data-occasion-accent="#C9718A">Dark</button>
+              <button type="button" class="date-theme-btn" data-mode="occasion" data-occasion-id="cherry-blossom" data-occasion-accent="#C9718A">Occasion</button>
+            </div>
             
             <p class="occasion-source">Source: National Park Service</p>
             
@@ -270,6 +277,12 @@
             </p>
             <p class="occasion-factoid">Oktoberfest has been held on Munich&#39;s Theresienwiese since 1810, originally to celebrate Crown Prince Ludwig&#39;s wedding to Princess Therese of Saxony-Hildburghausen.</p>
             
+            <div class="date-theme-buttons">
+              <button type="button" class="date-theme-btn" data-mode="light" data-occasion-id="oktoberfest" data-occasion-accent="#0057A8">Light</button>
+              <button type="button" class="date-theme-btn" data-mode="dark" data-occasion-id="oktoberfest" data-occasion-accent="#0057A8">Dark</button>
+              <button type="button" class="date-theme-btn" data-mode="occasion" data-occasion-id="oktoberfest" data-occasion-accent="#0057A8">Occasion</button>
+            </div>
+            
             <p class="occasion-source">Source: Stadtarchiv München</p>
             
           </div>
@@ -289,6 +302,12 @@
               
             </p>
             <p class="occasion-factoid">World Intellectual Property Day has been observed on April 26th since 2001 — the date the WIPO Convention entered into force in 1970.</p>
+            
+            <div class="date-theme-buttons">
+              <button type="button" class="date-theme-btn" data-mode="light" data-occasion-id="world-ip-day" data-occasion-accent="#2E8B57">Light</button>
+              <button type="button" class="date-theme-btn" data-mode="dark" data-occasion-id="world-ip-day" data-occasion-accent="#2E8B57">Dark</button>
+              <button type="button" class="date-theme-btn" data-mode="occasion" data-occasion-id="world-ip-day" data-occasion-accent="#2E8B57">Occasion</button>
+            </div>
             
             <p class="occasion-source">Source: WIPO</p>
             
@@ -310,6 +329,12 @@
             </p>
             <p class="occasion-factoid">Article I, Section 8 of the Constitution explicitly grants Congress power to protect intellectual property — one of the few areas of law the founders named directly.</p>
             
+            <div class="date-theme-buttons">
+              <button type="button" class="date-theme-btn" data-mode="light" data-occasion-id="us-constitution-day" data-occasion-accent="#8B1A1A">Light</button>
+              <button type="button" class="date-theme-btn" data-mode="dark" data-occasion-id="us-constitution-day" data-occasion-accent="#8B1A1A">Dark</button>
+              <button type="button" class="date-theme-btn" data-mode="occasion" data-occasion-id="us-constitution-day" data-occasion-accent="#8B1A1A">Occasion</button>
+            </div>
+            
             <p class="occasion-source">Source: US Constitution</p>
             
           </div>
@@ -329,6 +354,12 @@
               
             </p>
             <p class="occasion-factoid">On October 3rd 1990, East and West Germany officially reunified. The combined patent portfolio of East German state enterprises presented one of the largest IP integration challenges in European history.</p>
+            
+            <div class="date-theme-buttons">
+              <button type="button" class="date-theme-btn" data-mode="light" data-occasion-id="german-unity" data-occasion-accent="#CC0000">Light</button>
+              <button type="button" class="date-theme-btn" data-mode="dark" data-occasion-id="german-unity" data-occasion-accent="#CC0000">Dark</button>
+              <button type="button" class="date-theme-btn" data-mode="occasion" data-occasion-id="german-unity" data-occasion-accent="#CC0000">Occasion</button>
+            </div>
             
             <p class="occasion-source">Source: Bundesarchiv</p>
             
@@ -426,7 +457,7 @@
         <button class="cv-toggle-btn is-active" data-view="one" type="button">One Page</button>
         <button class="cv-toggle-btn" data-view="all" type="button">All</button>
       </div>
-      <a href="/personalSite/cv-print/?view=one" class="print-cv-btn" id="print-cv-link" target="_blank" rel="noopener">
+      <a href="/cv-print/?view=one" class="print-cv-btn" id="print-cv-link" target="_blank" rel="noopener">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polyline points="6 9 6 2 18 2 18 9"/>
           <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
@@ -589,9 +620,9 @@
   </div>
 
   <nav class="home-footer__nav">
-    <a href="/personalSite/about">About</a>
-    <a href="/personalSite/projects">Projects</a>
-    <a href="/personalSite/blog">Journal</a>
+    <a href="/about">About</a>
+    <a href="/projects">Projects</a>
+    <a href="/blog">Journal</a>
   </nav>
 
   <div class="home-footer__contact">
@@ -618,10 +649,11 @@
 
   </footer>
   
-  <script src="/personalSite/js/theme.js"></script>
+  <script src="/js/theme.js"></script>
+  <script src="/js/footer-search.js"></script>
   
   
-  <script src="/personalSite/js/pages.js"></script>
+  <script src="/js/pages.js"></script>
   
 
 </body>
