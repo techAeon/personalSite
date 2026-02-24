@@ -9,8 +9,13 @@
     (function () {
       var t = '';
       try { t = localStorage.getItem('kjo-theme') || ''; } catch(e) {}
-      if (t === 'dark' || t === 'occasion' || t === 'light') {
-        document.documentElement.setAttribute('data-theme', t);
+      if (t === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+      } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+      }
+      if (t === 'occasion') {
+        document.documentElement.setAttribute('data-occasion', 'pending');
       }
     })();
   </script>
