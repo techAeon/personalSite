@@ -8,7 +8,7 @@
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Inter', -apple-system, system-ui, sans-serif;
   --box-max-width: 1000px;
-  --portrait-h: 460px;
+  --portrait-h: 560px;
   --bg: #ffffff;
   --surface: #ffffff;
   --text: #2C2C2C;
@@ -188,17 +188,26 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .portrait-wrapper::after {
   content: '';
-  position: absolute; bottom: 0; left: 0; right: 0;
-  height: 120px;
-  background-image: radial-gradient(circle, var(--accent) 1px, transparent 1px);
-  background-size: 6px 6px;
-  /* Fade the dot field itself so dots dissolve upward */
-  -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
-  mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 230px;
+  /* Horizontal lines: thinner/farther at top, thicker/closer toward bottom. */
+  background-image:
+    linear-gradient(to bottom, transparent 0 28px, color-mix(in srgb, var(--accent) 28%, transparent) 28px 29px, transparent 29px 100%),
+    linear-gradient(to bottom, transparent 0 46px, color-mix(in srgb, var(--accent) 38%, transparent) 46px 48px, transparent 48px 100%),
+    linear-gradient(to bottom, transparent 0 66px, color-mix(in srgb, var(--accent) 50%, transparent) 66px 69px, transparent 69px 100%),
+    linear-gradient(to bottom, transparent 0 84px, color-mix(in srgb, var(--accent) 62%, transparent) 84px 88px, transparent 88px 100%),
+    linear-gradient(to bottom, transparent 0 102px, color-mix(in srgb, var(--accent) 74%, transparent) 102px 107px, transparent 107px 100%),
+    linear-gradient(to bottom, transparent 0 120px, color-mix(in srgb, var(--accent) 85%, transparent) 120px 126px, transparent 126px 100%),
+    linear-gradient(to bottom, transparent 0 138px, var(--accent) 138px 145px, transparent 145px 100%),
+    linear-gradient(to bottom, transparent 0%, var(--accent) 94%);
   pointer-events: none;
+  z-index: 2;
 }
 
-.image-fill { flex: 1; background: var(--accent); }
+.image-fill {
+  flex: 1;
+  background: var(--accent);
+}
 
 /* ── CONTENT COLUMN ── */
 .content-section {
@@ -322,6 +331,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   text-decoration: none; border-radius: 3px;
   transition: color 0.2s ease, background 0.2s ease;
   pointer-events: auto;
+  margin-right: 0.35rem;
 }
 
 .nav-link {
@@ -744,7 +754,14 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .site-header__link.is-active { color: var(--text); border-bottom-color: var(--accent); }
 
 /* ── Site footer (inner pages) ── */
-.site-footer { padding: 0 2rem; }
+.site-footer { width: 100%; padding: 0 2rem; }
+.home-wrapper > .site-footer {
+  max-width: var(--box-max-width);
+  width: 100%;
+  padding: 0.75rem 0.25rem 0;
+  align-self: center;
+}
+.home-wrapper > .site-footer .home-footer { margin: 0 auto; }
 .site-footer .home-footer { margin: 0 auto; }
 
 /* ═══════════════════════════════════════════════
