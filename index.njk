@@ -116,13 +116,30 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
               <span class="nav-label">Learn some fun facts about me</span>
               <a href="{{ '/about' | url }}" class="nav-link" title="Go to About" data-hover-label="About">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="8" r="4"/>
-                  <path d="M6 21v-1a6 6 0 0 1 12 0v1"/>
+                  <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                  <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
                 </svg>
               </a>
             </div>
             <div class="nav-body"><div class="nav-body-inner">
-              <p><a href="{{ profile.funFacts.book.url }}" target="_blank" rel="noopener">{{ profile.funFacts.book.title }}</a> by {{ profile.funFacts.book.author }}, {{ profile.funFacts.podcast.title }}, <a href="{{ profile.funFacts.show.url }}" target="_blank" rel="noopener">{{ profile.funFacts.show.title }}</a>, and <a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a>.</p>
+              <div class="fun-facts-mini-grid">
+                <div class="fun-fact-mini">
+                  <p class="fun-fact-mini__label">Book</p>
+                  <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.book.url }}" target="_blank" rel="noopener">{{ profile.funFacts.book.title }}</a></p>
+                </div>
+                <div class="fun-fact-mini">
+                  <p class="fun-fact-mini__label">Podcast</p>
+                  <p class="fun-fact-mini__value">{{ profile.funFacts.podcast.title }}</p>
+                </div>
+                <div class="fun-fact-mini">
+                  <p class="fun-fact-mini__label">Show</p>
+                  <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.show.url }}" target="_blank" rel="noopener">{{ profile.funFacts.show.title }}</a></p>
+                </div>
+                <div class="fun-fact-mini">
+                  <p class="fun-fact-mini__label">Album</p>
+                  <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a></p>
+                </div>
+              </div>
               <a href="{{ '/about' | url }}" class="more-btn">About me &rarr;</a>
             </div></div>
           </div>
