@@ -1,22 +1,25 @@
 {
   "funFacts": {
     "book": {
-      "title": "The Name of the Rose",
-      "author": "Umberto Eco",
-      "note": "A medieval murder mystery tangled up in semiotics and library politics. Perfect for a lawyer who reads between the lines."
+      "title": "The Pillars of the Earth",
+      "author": "Ken Follett",
+      "url": "https://www.goodreads.com/book/show/5043.The_Pillars_of_the_Earth",
+      "note": "An epic historical novel about craft, ambition, and the long game of building things that last."
     },
     "podcast": {
-      "title": "Cautionary Tales",
-      "host": "Tim Harford",
-      "note": "History's biggest disasters, methodically dissected. A reminder that certainty is usually a warning sign."
+      "title": "Wait Wait... Don't Tell Me!",
+      "host": "NPR",
+      "note": "Sharp wit, weird news, and exactly the right amount of chaos for a weekend listen."
     },
     "show": {
-      "title": "Better Call Saul",
-      "note": "Still the most nuanced portrait of the legal profession ever filmed. Sorry, Suits."
+      "title": "The Leftovers",
+      "url": "https://www.hbo.com/the-leftovers",
+      "note": "My favorite series for its emotional range, strange beauty, and refusal to take easy narrative exits."
     },
-    "hobby": {
-      "title": "Rugby Union",
-      "note": "Second row since 2017. Still learning when to keep my head down — on the pitch, anyway."
+    "album": {
+      "title": "LUX — Rosalía",
+      "url": "https://open.spotify.com/album/6jbtHi5R0jMXoliU2OS0lo",
+      "note": "A record I keep coming back to for its bold production and genre-bending confidence."
     }
   },
   "skills": {
