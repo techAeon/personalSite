@@ -5,12 +5,11 @@ title: Journal - Kieran J. O'Leary
 
 <div class="page-container page-container--wide">
 
-  <header class="page-header">
+  <header class="page-header page-header--with-search">
     <h1>Journal</h1>
-  </header>
 
-  {# ── Search bar ── #}
-  <div class="blog-search-bar">
+    {# ── Search bar ── #}
+    <div class="blog-search-bar">
     <label for="blog-search" class="sr-only">Search posts</label>
     <input
       type="search"
@@ -22,6 +21,7 @@ title: Journal - Kieran J. O'Leary
     >
     <span class="blog-search-count" id="blog-search-count" aria-live="polite"></span>
   </div>
+  </header>
 
   {# ── Post list ── #}
   <div class="blog-list" id="blog-list">

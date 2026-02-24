@@ -13,6 +13,8 @@ title: About Me - Kieran J. O'Leary
         <h1>About Me</h1>
       </header>
 
+      <p><strong>Servus!</strong></p>
+
       <p>If you made it here, you probably found me through the patent world — but there's more to the story than prosecution deadlines and claim drafts. I'm Kieran, a US patent attorney and IP strategist currently based in Munich, with one foot perpetually in Pittsburgh. I moved to Bavaria for a role at 2SPL Patentanwälte and somehow never left, which might have something to do with the Biergärten.</p>
 
       <p>I've spent the last decade or so helping companies — from scrappy startups to major international corporations — figure out what's worth protecting, how to protect it, and what to do when someone else comes too close. My technical background spans machine learning, medical imaging, semiconductors, and telecommunications, which means I get to spend my days translating complex innovations into documents that actually hold up in the real world.</p>
@@ -97,7 +99,7 @@ title: About Me - Kieran J. O'Leary
         </div>
         <div>
           <p class="fun-fact__label">Favorite Book</p>
-          <p class="fun-fact__value">{{ profile.funFacts.book.title }}</p>
+          <p class="fun-fact__value"><a href="{{ profile.funFacts.book.url }}" target="_blank" rel="noopener">{{ profile.funFacts.book.title }}</a></p>
           <p class="fun-fact__author">{{ profile.funFacts.book.author }}</p>
           <p class="fun-fact__note">{{ profile.funFacts.book.note }}</p>
         </div>
@@ -128,7 +130,7 @@ title: About Me - Kieran J. O'Leary
         </div>
         <div>
           <p class="fun-fact__label">Favorite Show</p>
-          <p class="fun-fact__value">{{ profile.funFacts.show.title }}</p>
+          <p class="fun-fact__value"><a href="{{ profile.funFacts.show.url }}" target="_blank" rel="noopener">{{ profile.funFacts.show.title }}</a></p>
           <p class="fun-fact__note">{{ profile.funFacts.show.note }}</p>
         </div>
       </div>
@@ -141,9 +143,9 @@ title: About Me - Kieran J. O'Leary
           </svg>
         </div>
         <div>
-          <p class="fun-fact__label">Active Hobby</p>
-          <p class="fun-fact__value">{{ profile.funFacts.hobby.title }}</p>
-          <p class="fun-fact__note">{{ profile.funFacts.hobby.note }}</p>
+          <p class="fun-fact__label">Favorite Album</p>
+          <p class="fun-fact__value"><a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a></p>
+          <p class="fun-fact__note">{{ profile.funFacts.album.note }}</p>
         </div>
       </div>
 
@@ -157,7 +159,7 @@ title: About Me - Kieran J. O'Leary
   <section id="important-dates" class="about-section">
     <h2>Important Dates</h2>
     <p class="about-section__intro">A few dates on the calendar that carry particular meaning — mostly because of what they represent at the intersection of law, history, and place.</p>
-    <p class="about-section__intro">Use the buttons below each date to preview light, dark, or that date's occasion accent.</p>
+    <p class="about-section__intro">Use the button below each date to preview that date's occasion theme.</p>
     <div class="occasions-list">
       {% for occasion in daily.occasions %}
         {% if occasion.id != "test-occasion" %}
@@ -177,9 +179,7 @@ title: About Me - Kieran J. O'Leary
             <p class="occasion-factoid">{{ occasion.factoid }}</p>
             {% set modeId = occasion.id %}
             <div class="date-theme-buttons">
-              <button type="button" class="date-theme-btn" data-mode="light" data-occasion-id="{{ modeId }}" data-occasion-accent="{{ occasion.accent }}">Light</button>
-              <button type="button" class="date-theme-btn" data-mode="dark" data-occasion-id="{{ modeId }}" data-occasion-accent="{{ occasion.accent }}">Dark</button>
-              <button type="button" class="date-theme-btn" data-mode="occasion" data-occasion-id="{{ modeId }}" data-occasion-accent="{{ occasion.accent }}">Occasion</button>
+              <button type="button" class="date-theme-btn" data-mode="occasion" data-occasion-id="{{ modeId }}" data-occasion-accent="{{ occasion.accent }}">Preview theme</button>
             </div>
             {% if occasion.factoid_source %}
             <p class="occasion-source">Source: {{ occasion.factoid_source }}</p>
