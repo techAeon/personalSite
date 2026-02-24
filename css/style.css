@@ -358,22 +358,6 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .nav-link:hover { color: var(--accent); background: rgba(93,173,226,0.08); }
 .nav-link svg { width: 17px; height: 17px; }
 
-.nav-link::before {
-  content: attr(data-hover-label);
-  font-family: var(--sans);
-  font-size: 0.72rem;
-  margin-right: 0.4rem;
-  color: var(--accent);
-  opacity: 0;
-  transform: translateX(6px);
-  transition: opacity 0.2s ease, transform 0.2s ease;
-}
-
-.nav-link:hover::before {
-  opacity: 1;
-  transform: translateX(0);
-}
-
 /* ── ACCORDION BODY ANIMATION ── */
 .nav-body {
   display: grid;
