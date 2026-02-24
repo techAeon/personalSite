@@ -34,6 +34,7 @@ body {
   background-image: none;
   line-height: 1.6;
   overflow-x: hidden;
+  overflow-y: scroll;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -189,16 +190,16 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .portrait-wrapper::after {
   content: '';
   position: absolute; bottom: -1px; left: 0; right: 0;
-  height: 230px;
+  height: 276px;
   /* Horizontal lines: thinner/farther at top, thicker/closer toward bottom. */
   background-image:
-    linear-gradient(to bottom, transparent 0 28px, color-mix(in srgb, var(--accent) 28%, transparent) 28px 29px, transparent 29px 100%),
-    linear-gradient(to bottom, transparent 0 46px, color-mix(in srgb, var(--accent) 38%, transparent) 46px 48px, transparent 48px 100%),
-    linear-gradient(to bottom, transparent 0 66px, color-mix(in srgb, var(--accent) 50%, transparent) 66px 69px, transparent 69px 100%),
-    linear-gradient(to bottom, transparent 0 84px, color-mix(in srgb, var(--accent) 62%, transparent) 84px 88px, transparent 88px 100%),
-    linear-gradient(to bottom, transparent 0 102px, color-mix(in srgb, var(--accent) 74%, transparent) 102px 107px, transparent 107px 100%),
-    linear-gradient(to bottom, transparent 0 120px, color-mix(in srgb, var(--accent) 85%, transparent) 120px 126px, transparent 126px 100%),
-    linear-gradient(to bottom, transparent 0 138px, var(--accent) 138px 145px, transparent 145px 100%),
+    linear-gradient(to bottom, transparent 0 56px, color-mix(in srgb, var(--accent) 28%, transparent) 56px 57px, transparent 57px 100%),
+    linear-gradient(to bottom, transparent 0 74px, color-mix(in srgb, var(--accent) 38%, transparent) 74px 76px, transparent 76px 100%),
+    linear-gradient(to bottom, transparent 0 94px, color-mix(in srgb, var(--accent) 50%, transparent) 94px 97px, transparent 97px 100%),
+    linear-gradient(to bottom, transparent 0 112px, color-mix(in srgb, var(--accent) 62%, transparent) 112px 116px, transparent 116px 100%),
+    linear-gradient(to bottom, transparent 0 130px, color-mix(in srgb, var(--accent) 74%, transparent) 130px 135px, transparent 135px 100%),
+    linear-gradient(to bottom, transparent 0 148px, color-mix(in srgb, var(--accent) 85%, transparent) 148px 154px, transparent 154px 100%),
+    linear-gradient(to bottom, transparent 0 166px, var(--accent) 166px 173px, transparent 173px 100%),
     linear-gradient(to bottom, transparent 0%, var(--accent) 94%);
   pointer-events: none;
   z-index: 2;
@@ -323,7 +324,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
 .nav-item.is-open .chevron { transform: rotate(90deg); }
 
-.nav-label { flex: 1; }
+.nav-label { flex: 1; font-weight: 600; }
 
 .nav-link {
   flex-shrink: 0; display: flex; align-items: center; justify-content: center;
@@ -1318,3 +1319,8 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   h1, h2, h3 { page-break-after: avoid; }
   .cv-entry, .print-entry { page-break-inside: avoid; }
 }
+
+
+.date-theme-buttons { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+.date-theme-btn { border: 1px solid var(--border); background: var(--surface); color: var(--text); padding: 0.2rem 0.55rem; border-radius: 999px; font-size: 0.72rem; cursor: pointer; }
+.date-theme-btn:hover { border-color: var(--accent); color: var(--accent); }

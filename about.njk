@@ -157,6 +157,7 @@ title: About Me - Kieran J. O'Leary
   <section id="important-dates" class="about-section">
     <h2>Important Dates</h2>
     <p class="about-section__intro">A few dates on the calendar that carry particular meaning — mostly because of what they represent at the intersection of law, history, and place.</p>
+    <p class="about-section__intro">Use the buttons below each date to preview light, dark, or that date's occasion accent.</p>
     <div class="occasions-list">
       {% for occasion in daily.occasions %}
         {% if occasion.id != "test-occasion" %}
@@ -174,6 +175,12 @@ title: About Me - Kieran J. O'Leary
               {% endif %}
             </p>
             <p class="occasion-factoid">{{ occasion.factoid }}</p>
+            {% set modeId = occasion.id %}
+            <div class="date-theme-buttons">
+              <button type="button" class="date-theme-btn" data-mode="light" data-occasion-id="{{ modeId }}" data-occasion-accent="{{ occasion.accent }}">Light</button>
+              <button type="button" class="date-theme-btn" data-mode="dark" data-occasion-id="{{ modeId }}" data-occasion-accent="{{ occasion.accent }}">Dark</button>
+              <button type="button" class="date-theme-btn" data-mode="occasion" data-occasion-id="{{ modeId }}" data-occasion-accent="{{ occasion.accent }}">Occasion</button>
+            </div>
             {% if occasion.factoid_source %}
             <p class="occasion-source">Source: {{ occasion.factoid_source }}</p>
             {% endif %}
