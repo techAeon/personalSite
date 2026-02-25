@@ -5,6 +5,7 @@
 :root {
   --accent: #5DADE2;
   --accent-text: #2e6b94;
+  --accent-muted: #e6f1f9;
   --serif: 'Playfair Display', Georgia, serif;
   --sans: 'Inter', -apple-system, system-ui, sans-serif;
   --box-max-width: 1000px;
@@ -35,7 +36,6 @@ body {
   font-family: var(--sans);
   color: var(--text);
   background-color: var(--bg);
-  background-image: none;
   line-height: 1.6;
   overflow-y: scroll;
   transition: background-color 0.3s ease, color 0.3s ease;
@@ -662,7 +662,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   padding: 0.75rem 1.5rem;
   color: white;
   opacity: 0.7;
-  transition: all 0.3s;
+  transition: opacity 0.3s, background-color 0.3s;
   text-decoration: none;
   flex: 1;
   text-align: center;
@@ -724,7 +724,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .project-card {
   border: 2px solid var(--text);
   padding: 2rem;
-  transition: all 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s;
   position: relative;
 }
 
@@ -1407,7 +1407,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   padding: 0.25rem 0.7rem; background: transparent;
   border: 1px solid var(--border); border-radius: 2px;
   color: var(--text-muted); cursor: pointer;
-  transition: all 0.2s;
+  transition: color 0.2s, background-color 0.2s, border-color 0.2s;
 }
 .print-toggle-btn.is-active { background: var(--accent); color: #fff; border-color: var(--accent); }
 

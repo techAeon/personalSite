@@ -23,13 +23,8 @@
            : dd % 10 === 2 ? 'nd'
            : dd % 10 === 3 ? 'rd' : 'th';
 
-  /* Find today's occasion (DAILY inlined by Eleventy in base layout) */
-  var OCCASIONS = (typeof DAILY !== 'undefined' && DAILY.occasions) ? DAILY.occasions : [];
-  var activeOccasion = null;
-  for (var i = 0; i < OCCASIONS.length; i++) {
-    var o = OCCASIONS[i];
-    if (mmdd >= o.start && mmdd <= o.end) { activeOccasion = o; break; }
-  }
+  /* theme.js computes this once and stores it globally */
+  var activeOccasion = window.activeOccasion || null;
 
   /* Date always links to /today/ — occasion anchor if one is active */
   var todayURL = '/today/' + (activeOccasion ? '#' + activeOccasion.id : '');
