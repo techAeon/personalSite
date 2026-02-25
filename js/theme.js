@@ -14,6 +14,7 @@
     var o = OCCASIONS[i];
     if (mmdd >= o.start && mmdd <= o.end) { activeOccasion = o; break; }
   }
+  window.activeOccasion = activeOccasion;
 
   /* Occasion day cycle: occasion → light → dark → occasion */
   var MODES = activeOccasion ? ['occasion', 'light', 'dark'] : ['light', 'dark'];
