@@ -14,7 +14,7 @@ title: Journal - Kieran J. O'Leary
       {# ── Post list ── #}
       <div class="blog-list" id="blog-list">
         {% if collections.posts.length > 0 %}
-          {% for post in collections.posts %}
+          {% for post in collections.posts | reverse %}
           <article class="blog-post"
                    data-title="{{ post.data.title | lower }}"
                    data-excerpt="{{ post.data.excerpt | lower if post.data.excerpt else '' }}">

@@ -75,7 +75,7 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
             </div>
             <div class="nav-body"><div class="nav-body-inner">
               {% if collections.posts.length > 0 %}
-                {% for post in collections.posts %}
+                {% for post in collections.posts | reverse %}
                   {% if loop.index <= 2 %}
                 <div class="post-preview">
                   <a href="{{ post.url }}">{{ post.data.title }}</a>
@@ -124,20 +124,20 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
             <div class="nav-body"><div class="nav-body-inner">
               <div class="fun-facts-mini-grid">
                 <div class="fun-fact-mini">
-                  <p class="fun-fact-mini__label">My favorite story</p>
                   <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.book.url }}" target="_blank" rel="noopener">{{ profile.funFacts.book.title }}</a></p>
+                  <p class="fun-fact-mini__label">My favorite story</p>
                 </div>
                 <div class="fun-fact-mini">
-                  <p class="fun-fact-mini__label">My mood lifter</p>
                   <p class="fun-fact-mini__value">{{ profile.funFacts.podcast.title }}</p>
+                  <p class="fun-fact-mini__label">My mood lifter</p>
                 </div>
                 <div class="fun-fact-mini">
-                  <p class="fun-fact-mini__label">An visual feast</p>
                   <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.show.url }}" target="_blank" rel="noopener">{{ profile.funFacts.show.title }}</a></p>
+                  <p class="fun-fact-mini__label">My recommended show</p>
                 </div>
                 <div class="fun-fact-mini">
-                  <p class="fun-fact-mini__label">My earworm</p>
                   <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a></p>
+                  <p class="fun-fact-mini__label">My earworm</p>
                 </div>
               </div>
               <a href="{{ '/about' | url }}" class="more-btn">About me &rarr;</a>
