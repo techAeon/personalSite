@@ -88,6 +88,40 @@
 
 
 
+  function syncThemeButtonIcons(mode) {
+    var activeOccasion = window.activeOccasion || null;
+    var MODES = activeOccasion ? ['occasion', 'light', 'dark'] : ['light', 'dark'];
+    var iconCurrent = document.getElementById('icon-current');
+    var iconHover = document.getElementById('icon-hover');
+    var btnTheme = document.getElementById('btn-theme');
+
+    var ICONS = {
+      light:
+        '<circle cx="12" cy="12" r="5"/>' +
+        '<line x1="12" y1="1" x2="12" y2="3"/>' +
+        '<line x1="12" y1="21" x2="12" y2="23"/>' +
+        '<line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>' +
+        '<line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>' +
+        '<line x1="1" y1="12" x2="3" y2="12"/>' +
+        '<line x1="21" y1="12" x2="23" y2="12"/>' +
+        '<line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>' +
+        '<line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>',
+      dark: '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>',
+      occasion: (activeOccasion && activeOccasion.icon)
+        ? activeOccasion.icon
+        : '<path d="M12 2l2.4 7.4H22l-6.2 4.5 2.4 7.4L12 17l-6.2 4.3 2.4-7.4L2 9.4h7.6z"/>'
+    };
+
+    var currentMode = MODES.indexOf(mode) !== -1 ? mode : 'light';
+    var nextMode = MODES[(MODES.indexOf(currentMode) + 1) % MODES.length];
+
+    if (iconCurrent) iconCurrent.innerHTML = ICONS[currentMode] || ICONS.light;
+    if (iconHover) iconHover.innerHTML = ICONS[nextMode] || ICONS.light;
+    if (btnTheme) {
+      btnTheme.title = 'Switch to ' + nextMode + ' mode';
+      btnTheme.setAttribute('aria-label', 'Switch to ' + nextMode + ' mode');
+    }
+  }
 
   /* ── About page: Important-date theme buttons ─────────────────────────── */
   var dateThemeButtons = document.querySelectorAll('.date-theme-btn');
@@ -104,10 +138,12 @@
           document.documentElement.setAttribute('data-occasion', occasionId);
           if (occasionAccent) document.documentElement.style.setProperty('--accent', occasionAccent);
           try { localStorage.setItem('kjo-theme', 'occasion'); } catch(e) {}
+          syncThemeButtonIcons('occasion');
         } else {
           document.documentElement.removeAttribute('data-occasion');
           document.documentElement.style.removeProperty('--accent');
           try { localStorage.setItem('kjo-theme', mode); } catch(e) {}
+          syncThemeButtonIcons(mode);
         }
       });
     });
