@@ -354,23 +354,25 @@ title: About Me - Kieran J. O'Leary
   ══════════════════════════════════════ #}
   <section id="patents" class="about-section">
     <h2>Selected Patents</h2>
-    <p class="about-section__intro">A sample of issued US patents obtained on behalf of clients across medical imaging, semiconductors, telecommunications, and AI.</p>
+    <p class="about-section__intro">A selection of issued and pending US patents across AI, telecommunications, formal verification, and cloud security.</p>
 
     <div class="patents-table-wrap">
       <table class="patents-table">
         <thead>
           <tr>
-            <th>Issue Date</th>
+            <th>Patent No.</th>
             <th>Title</th>
-            <th>Applicant</th>
+            <th>Assignee</th>
+            <th>Status</th>
           </tr>
         </thead>
         <tbody>
           {% for patent in patents %}
           <tr>
-            <td class="patent-date">{{ patent.issued }}</td>
+            <td class="patent-date">{{ patent.number }}</td>
             <td class="patent-title">{{ patent.title }}</td>
             <td class="patent-applicant">{{ patent.applicant }}</td>
+            <td class="patent-status">{{ patent.status }}</td>
           </tr>
           {% endfor %}
         </tbody>
