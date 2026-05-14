@@ -1,4 +1,5 @@
 const footerSearchPlugin = require('./plugins/footer-search-plugin');
+const { DateTime } = require('luxon');
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(footerSearchPlugin);
@@ -11,6 +12,11 @@ module.exports = function(eleventyConfig) {
       month: 'long',
       day: 'numeric'
     });
+  });
+
+  eleventyConfig.addFilter('dateOnly', function(dateObj, format) {
+    if (!dateObj) return '';
+    return DateTime.fromJSDate(new Date(dateObj), { zone: 'utc' }).toFormat(format);
   });
 
   eleventyConfig.addPassthroughCopy('css');

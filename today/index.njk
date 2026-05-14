@@ -175,7 +175,7 @@ permalink: /today/index.html
     <p class="occasion-location" id="occ-location"></p>
     <p class="occasion-factoid" id="occ-factoid"></p>
     <p class="occasion-source" id="occ-source"></p>
-    <a class="occasion-about-link" id="occ-link" href="/about/#occasions">
+    <a class="occasion-about-link" id="occ-link" href="/about/#important-dates">
       Why this matters to me &rarr;
     </a>
   </section>
@@ -202,7 +202,7 @@ permalink: /today/index.html
 #}
 <script>
 var ALL_POSTS = [
-  {%- for post in collections.post | reverse %}
+  {%- for post in collections.posts | reverse %}
   {
     "title": {{ post.data.title | dump | safe }},
     "url":   {{ post.url | dump | safe }},
@@ -216,6 +216,7 @@ var ALL_POSTS = [
 
 <script>
 (function () {
+  function initTodayPage() {
 
   var DAYS   = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var MONTHS = ['January','February','March','April','May','June',
@@ -242,10 +243,12 @@ var ALL_POSTS = [
   var OCCASIONS = (typeof DAILY !== 'undefined' && DAILY.occasions) ? DAILY.occasions : [];
   var FACTOIDS  = (typeof DAILY !== 'undefined' && DAILY.factoids)  ? DAILY.factoids  : [];
 
-  var active = null;
-  for (var i = 0; i < OCCASIONS.length; i++) {
-    var o = OCCASIONS[i];
-    if (mmdd >= o.start && mmdd <= o.end) { active = o; break; }
+  var active = window.activeOccasion || null;
+  if (!active) {
+    for (var i = 0; i < OCCASIONS.length; i++) {
+      var o = OCCASIONS[i];
+      if (mmdd >= o.start && mmdd <= o.end) { active = o; break; }
+    }
   }
 
   /* ── Show occasion or fallback factoid ── */
@@ -264,7 +267,7 @@ var ALL_POSTS = [
 
     /* Deep-link to the occasions section of the about page */
     var link = document.getElementById('occ-link');
-    if (link) link.href = '/about/#' + active.id;
+    if (link) link.href = '/about/#occasion-' + active.id;
 
   } else {
     /* Find factoid for today's exact date, or pick a random one */
@@ -315,5 +318,12 @@ var ALL_POSTS = [
     if (sec2) setTimeout(function() { sec2.scrollIntoView({ behavior: 'smooth' }); }, 100);
   }
 
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTodayPage);
+  } else {
+    initTodayPage();
+  }
 })();
 </script>
