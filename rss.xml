@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kieran J. O&#39;Leary &#8212; Journal</title>
+    <link>https://kieranjoleary.com/blog/</link>
+    <atom:link href="https://kieranjoleary.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <description>US patent attorney and IP strategist in Munich. Writing about patent prosecution, preissuance submissions, and the software I build along the way.</description>
+    <language>en</language>
+    <item>
+      <title>The Duty of Disclosure Doesn&#39;t Translate</title>
+      <link>https://kieranjoleary.com/posts/the-duty-of-disclosure-doesnt-translate/</link>
+      <guid isPermaLink="true">https://kieranjoleary.com/posts/the-duty-of-disclosure-doesnt-translate/</guid>
+      <pubDate>Thu, 09 Jul 2026 00:00:00 GMT</pubDate>
+      <description>Practicing US patent law from Munich means translating between legal systems, not just languages. Nothing produces more disbelief across the table than explaining the American duty of candor to a European client.</description>
+    </item>
+    <item>
+      <title>Why Pulverhorn Keeps Three Copies of Every Submission</title>
+      <link>https://kieranjoleary.com/posts/why-pulverhorn-keeps-three-drafts/</link>
+      <guid isPermaLink="true">https://kieranjoleary.com/posts/why-pulverhorn-keeps-three-drafts/</guid>
+      <pubDate>Wed, 24 Jun 2026 00:00:00 GMT</pubDate>
+      <description>The most important design decision in the filing platform I&#39;m building isn&#39;t visible in the interface. It&#39;s a data model shaped by a question no engineer would think to ask — &quot;what will I need to prove in five years?&quot;</description>
+    </item>
+    <item>
+      <title>Building 3PPS.info</title>
+      <link>https://kieranjoleary.com/posts/building-3pps-info/</link>
+      <guid isPermaLink="true">https://kieranjoleary.com/posts/building-3pps-info/</guid>
+      <pubDate>Thu, 14 May 2026 00:00:00 GMT</pubDate>
+      <description>Why I built a plain-English guide to the USPTO&#39;s Third-Party Preissuance Submission process, and what I learned trying to explain a legal procedure to people who don&#39;t want to become lawyers.</description>
+    </item>
+  </channel>
+</rss>
