@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 title: Kieran J. O'Leary - IP Attorney & Strategist
+description: US patent attorney and IP strategist in Munich. I help people protect the things they build — and lately I've been building a few things myself.
 ---
 
 <div class="home-wrapper">
@@ -52,12 +53,12 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
 
       <!-- Welcome -->
       <div class="welcome">
-        <h2>I take great pride in helping innovators claim the legal ground to build and defend their ideas.</h2>
+        <h2>I help people protect the things they build &mdash; and lately I&rsquo;ve been building a few things myself.</h2>
       </div>
 
       <!-- Where to start -->
       <div class="where-to-start">
-        <p class="where-to-start__heading">You can&hellip;</p>
+        <p class="where-to-start__heading">Start anywhere</p>
 
         <div class="nav-accordion" id="nav-accordion">
 
@@ -65,7 +66,7 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
           <div class="nav-item is-open">
             <div class="nav-summary" role="button" tabindex="0" aria-expanded="true">
               <span class="chevron"><svg viewBox="0 0 10 10"><polyline points="2,2 8,5 2,8"/></svg></span>
-              <span class="nav-label">Read my latest posts</span>
+              <span class="nav-label">Latest from the journal</span>
               <a href="{{ '/blog' | url }}" class="nav-link" title="Go to Journal">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
@@ -94,7 +95,7 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
           <div class="nav-item">
             <div class="nav-summary" role="button" tabindex="0" aria-expanded="false">
               <span class="chevron"><svg viewBox="0 0 10 10"><polyline points="2,2 8,5 2,8"/></svg></span>
-              <span class="nav-label">Explore my projects</span>
+              <span class="nav-label">What I&rsquo;m building</span>
               <a href="{{ '/projects' | url }}" class="nav-link" title="Go to Projects">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <polygon points="12 2 2 7 12 12 22 7 12 2"/>
@@ -104,8 +105,9 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
               </a>
             </div>
             <div class="nav-body"><div class="nav-body-inner">
-              <p>Pulverhorn &mdash; a third-party preissuance submission service for anonymous USPTO filings.</p>
-              <a href="{{ '/projects' | url }}" class="more-btn">All Projects &rarr;</a>
+              <p><a href="https://3pps.info" target="_blank" rel="noopener">3PPS.info</a> &mdash; a plain-English guide to USPTO preissuance submissions. Live now.</p>
+              <p>Pulverhorn &mdash; the filing platform to go with it. On the workbench.</p>
+              <a href="{{ '/projects' | url }}" class="more-btn">All projects &rarr;</a>
             </div></div>
           </div>
 
@@ -113,7 +115,7 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
           <div class="nav-item">
             <div class="nav-summary" role="button" tabindex="0" aria-expanded="false">
               <span class="chevron"><svg viewBox="0 0 10 10"><polyline points="2,2 8,5 2,8"/></svg></span>
-              <span class="nav-label">Learn some fun facts about me</span>
+              <span class="nav-label">A few things about me</span>
               <a href="{{ '/about' | url }}" class="nav-link" title="Go to About">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="8" r="4"/>
@@ -125,22 +127,22 @@ title: Kieran J. O'Leary - IP Attorney & Strategist
               <div class="fun-facts-mini-grid">
                 <div class="fun-fact-mini">
                   <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.book.url }}" target="_blank" rel="noopener">{{ profile.funFacts.book.title }}</a></p>
-                  <p class="fun-fact-mini__label">My favorite story</p>
+                  <p class="fun-fact-mini__label">Favorite story</p>
                 </div>
                 <div class="fun-fact-mini">
                   <p class="fun-fact-mini__value">{{ profile.funFacts.podcast.title }}</p>
-                  <p class="fun-fact-mini__label">My mood lifter</p>
+                  <p class="fun-fact-mini__label">Weekend listen</p>
                 </div>
                 <div class="fun-fact-mini">
                   <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.show.url }}" target="_blank" rel="noopener">{{ profile.funFacts.show.title }}</a></p>
-                  <p class="fun-fact-mini__label">My recommended show</p>
+                  <p class="fun-fact-mini__label">Show I recommend</p>
                 </div>
                 <div class="fun-fact-mini">
                   <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a></p>
-                  <p class="fun-fact-mini__label">My earworm</p>
+                  <p class="fun-fact-mini__label">On repeat</p>
                 </div>
               </div>
-              <a href="{{ '/about' | url }}" class="more-btn">About me &rarr;</a>
+              <a href="{{ '/about' | url }}" class="more-btn">More about me &rarr;</a>
             </div></div>
           </div>
 

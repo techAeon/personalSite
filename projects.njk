@@ -1,6 +1,7 @@
 ---
 layout: base.njk
 title: Projects - Kieran J. O'Leary
+description: Things I'm building — 3PPS.info, a plain-English guide to USPTO preissuance submissions, and Pulverhorn, the filing platform to go with it.
 ---
 
 <div class="page-container page-container--wide">
@@ -16,8 +17,12 @@ title: Projects - Kieran J. O'Leary
   <section class="project-hero" aria-label="Featured project">
     <div class="project-hero-card">
 
-      <div class="project-hero-visual" aria-hidden="true">
+      <div class="project-hero-visual{% if project.data.image %} project-hero-visual--shot{% endif %}" aria-hidden="true">
+        {% if project.data.image %}
+        <img src="{{ project.data.image | url }}" alt="" class="project-visual-img" loading="lazy">
+        {% else %}
         <div class="project-hero-visual__label">{{ project.data.title }}</div>
+        {% endif %}
       </div>
 
       <div class="project-hero-body">
@@ -36,13 +41,25 @@ title: Projects - Kieran J. O'Leary
         </div>
         {% endif %}
 
-        <a href="{{ project.url }}" class="project-hero-link">
-          Read more
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </a>
+        <div class="project-links">
+          <a href="{{ project.url }}" class="project-hero-link">
+            Read more
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </a>
+          {% if project.data.liveUrl %}
+          <a href="{{ project.data.liveUrl }}" class="project-hero-link" target="_blank" rel="noopener">
+            Visit the site
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+          {% endif %}
+        </div>
       </div>
 
     </div>
@@ -54,12 +71,16 @@ title: Projects - Kieran J. O'Leary
   {# ── Non-featured projects grid ── #}
   {% if collections.projects | length > 1 %}
   <section class="projects-grid-section">
-    <p class="projects-grid-heading">More Projects</p>
+    <p class="projects-grid-heading">Also on the workbench</p>
     <div class="project-grid">
       {% for project in collections.projects %}
       {% if not project.data.featured %}
       <div class="project-card">
-        <div class="project-card__visual" aria-hidden="true"></div>
+        <div class="project-card__visual{% if project.data.image %} project-card__visual--shot{% endif %}" aria-hidden="true">
+          {% if project.data.image %}
+          <img src="{{ project.data.image | url }}" alt="" class="project-visual-img" loading="lazy">
+          {% endif %}
+        </div>
         <div class="project-card__body">
           {% if project.data.status %}
           <span class="project-status project-status--sm">{{ project.data.status }}</span>

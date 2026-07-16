@@ -2,7 +2,7 @@
 title: Pulverhorn
 description: A third-party preissuance submission service for anonymous USPTO filings
 date: 2026-01-15
-featured: true
+featured: false
 status: "In Development"
 stack: ["Laravel", "Tailwind CSS", "Stripe", "PDF Generation"]
 ---

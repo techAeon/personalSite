@@ -19,6 +19,13 @@ module.exports = function(eleventyConfig) {
     return DateTime.fromJSDate(new Date(dateObj), { zone: 'utc' }).toFormat(format);
   });
 
+  eleventyConfig.addFilter('rfc822Date', function(dateObj) {
+    if (!dateObj) return '';
+    return DateTime.fromJSDate(new Date(dateObj), { zone: 'utc' })
+      .setLocale('en-US')
+      .toFormat("EEE, dd LLL yyyy HH:mm:ss 'GMT'");
+  });
+
   eleventyConfig.addPassthroughCopy('css');
   eleventyConfig.addPassthroughCopy('js');
   eleventyConfig.addPassthroughCopy('images');
