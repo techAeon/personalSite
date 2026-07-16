@@ -1219,6 +1219,23 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   background-size: 14px 14px, 9px 9px;
   background-position: 0 0, 4px 4px;
 }
+/* Screenshot variant — real product image replaces the pattern */
+.project-visual-img {
+  position: relative; z-index: 1;
+  display: block; width: 100%; height: 100%;
+  object-fit: cover; object-position: top left;
+}
+.project-hero-visual--shot {
+  height: 280px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.project-card__visual--shot {
+  height: 130px; opacity: 1;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+
 .project-hero-visual__label {
   position: relative; z-index: 1;
   font-family: var(--serif); font-size: 2rem; font-weight: 600;
@@ -1514,6 +1531,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 
   /* Projects hero */
   .project-hero-visual { height: 120px; }
+  .project-hero-visual--shot { height: 180px; }
   .project-hero-title { font-size: 1.6rem; }
 
   /* Print page */

@@ -16,8 +16,12 @@ title: Projects - Kieran J. O'Leary
   <section class="project-hero" aria-label="Featured project">
     <div class="project-hero-card">
 
-      <div class="project-hero-visual" aria-hidden="true">
+      <div class="project-hero-visual{% if project.data.image %} project-hero-visual--shot{% endif %}" aria-hidden="true">
+        {% if project.data.image %}
+        <img src="{{ project.data.image | url }}" alt="" class="project-visual-img" loading="lazy">
+        {% else %}
         <div class="project-hero-visual__label">{{ project.data.title }}</div>
+        {% endif %}
       </div>
 
       <div class="project-hero-body">
@@ -71,7 +75,11 @@ title: Projects - Kieran J. O'Leary
       {% for project in collections.projects %}
       {% if not project.data.featured %}
       <div class="project-card">
-        <div class="project-card__visual" aria-hidden="true"></div>
+        <div class="project-card__visual{% if project.data.image %} project-card__visual--shot{% endif %}" aria-hidden="true">
+          {% if project.data.image %}
+          <img src="{{ project.data.image | url }}" alt="" class="project-visual-img" loading="lazy">
+          {% endif %}
+        </div>
         <div class="project-card__body">
           {% if project.data.status %}
           <span class="project-status project-status--sm">{{ project.data.status }}</span>

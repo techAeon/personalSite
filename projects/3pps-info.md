@@ -7,6 +7,7 @@ status: "Live"
 stack: ["Eleventy", "Nunjucks", "Vanilla JS", "Netlify"]
 liveUrl: "https://3pps.info"
 github: "https://github.com/techAeon/3pps"
+image: /images/projects/3pps-info.png
 ---
 
 ## Overview
