@@ -180,11 +180,17 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 }
 
 /* ── IMAGE COLUMN ── */
+/* Dot texture matches the project visuals — one motif, used everywhere */
 .image-section {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: var(--accent);
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.25) 2.5px, transparent 2.5px),
+    radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1.5px);
+  background-size: 14px 14px, 9px 9px;
+  background-position: 0 0, 4px 4px;
   position: sticky;
   top: 0;
   max-height: 100vh;
@@ -198,9 +204,9 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   object-fit: cover; object-position: top center;
   filter: grayscale(100%);
   transition: filter 0.7s ease;
-  /* Add these two lines for the smooth fade */
-  -webkit-mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
-  mask-image: linear-gradient(to bottom, black 60%, transparent 100%);
+  /* Fade starts higher so the photo dissolves into the texture, not a hard bar */
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
 }
 
 .portrait-wrapper:hover .portrait { filter: grayscale(0%); }
@@ -403,6 +409,9 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 }
 
 .nav-body-inner p { font-size: 0.875rem; color: var(--text-muted); line-height: 1.6; }
+.nav-body-inner p + p { margin-top: 0.4rem; }
+.nav-body-inner p a { color: var(--accent-text); text-decoration: none; }
+.nav-body-inner p a:hover { text-decoration: underline; }
 
 .fun-facts-mini-grid {
   display: grid;
@@ -411,10 +420,12 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 }
 
 .fun-fact-mini {
-  border: 1px solid var(--border);
-  padding: 0.45rem 0.55rem;
-  border-radius: 3px;
+  border-left: 2px solid var(--border);
+  padding: 0.15rem 0 0.15rem 0.6rem;
+  transition: border-color 0.2s ease;
 }
+
+.fun-fact-mini:hover { border-left-color: var(--accent); }
 
 .fun-fact-mini__value {
   font-family: var(--serif);
@@ -724,27 +735,20 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   margin-top: 2rem;
 }
 
+/* Secondary cards stay quiet — the corner-bracket motif is reserved for
+   the featured card so the page has one clear lead */
 .project-card {
-  border: 2px solid var(--text);
+  border: 1px solid var(--border);
+  border-radius: 3px;
   padding: 2rem;
-  transition: transform 0.3s, box-shadow 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
   position: relative;
 }
 
-.project-card::before {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  width: 20px;
-  height: 20px;
-  border-top: 2px solid var(--accent);
-  border-left: 2px solid var(--accent);
-}
-
 .project-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 5px 5px 0 rgba(93, 173, 226, 0.2);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0 rgba(93, 173, 226, 0.15);
 }
 
 .blog-list {
@@ -999,18 +1003,18 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 ═══════════════════════════════════════════════ */
 .fun-facts-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 1.25rem;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 2.5rem;
 }
 
+/* Open layout — an accent rule instead of another box */
 .fun-fact {
   display: flex; align-items: flex-start; gap: 1rem;
-  padding: 1.25rem;
-  border: 1px solid var(--border);
-  border-radius: 3px;
+  padding: 0.2rem 0 0.2rem 1.1rem;
+  border-left: 2px solid var(--border);
   transition: border-color 0.2s ease;
 }
-.fun-fact:hover { border-color: var(--accent); }
+.fun-fact:hover { border-left-color: var(--accent); }
 
 .fun-fact__icon { color: var(--accent); flex-shrink: 0; margin-top: 2px; }
 
@@ -1285,8 +1289,11 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 .project-card__visual::before {
   content: '';
   position: absolute; inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.3) 2px, transparent 2px);
-  background-size: 10px 10px;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.25) 2.5px, transparent 2.5px),
+    radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1.5px);
+  background-size: 14px 14px, 9px 9px;
+  background-position: 0 0, 4px 4px;
 }
 .project-card__body { padding: 1.5rem; flex: 1; }
 .project-card__body h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
