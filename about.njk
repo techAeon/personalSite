@@ -109,14 +109,15 @@ description: US patent attorney in Munich, one foot perpetually in Pittsburgh. A
       <div class="fun-fact">
         <div class="fun-fact__icon" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M3 18v-6a9 9 0 0 1 18 0v6"/>
-            <path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3z"/>
-            <path d="M3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/>
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
           </svg>
         </div>
         <div>
           <p class="fun-fact__label">Favorite Podcast</p>
-          <p class="fun-fact__value">{{ profile.funFacts.podcast.title }}</p>
+          <p class="fun-fact__value"><a href="{{ profile.funFacts.podcast.url }}" target="_blank" rel="noopener">{{ profile.funFacts.podcast.title }}</a></p>
           <p class="fun-fact__author">{{ profile.funFacts.podcast.host }}</p>
           <p class="fun-fact__note">{{ profile.funFacts.podcast.note }}</p>
         </div>
@@ -140,12 +141,23 @@ description: US patent attorney in Munich, one foot perpetually in Pittsburgh. A
         <div class="fun-fact__icon" aria-hidden="true">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <circle cx="12" cy="12" r="10"/>
-            <polyline points="12 6 12 12 16 14"/>
+            <circle cx="12" cy="12" r="3"/>
+            <line x1="12" y1="12" x2="12.01" y2="12"/>
           </svg>
         </div>
         <div>
           <p class="fun-fact__label">Favorite Album</p>
-          <p class="fun-fact__value"><a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a></p>
+          <p class="fun-fact__value">
+            <a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a>
+            <a href="{{ profile.funFacts.album.spotify }}" target="_blank" rel="noopener" class="spotify-link" aria-label="Listen on Spotify">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M7 9.5c3.5-1.1 7-.7 9.5 1"/>
+                <path d="M7.5 12.6c2.9-.9 5.7-.5 7.9.8"/>
+                <path d="M8 15.5c2.2-.6 4.3-.3 6.1.7"/>
+              </svg>
+            </a>
+          </p>
           <p class="fun-fact__note">{{ profile.funFacts.album.note }}</p>
         </div>
       </div>

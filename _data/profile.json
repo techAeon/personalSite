@@ -9,6 +9,7 @@
     "podcast": {
       "title": "Wait Wait... Don't Tell Me!",
       "host": "NPR",
+      "url": "https://www.npr.org/programs/wait-wait-dont-tell-me/",
       "note": "Sharp wit, weird news, and exactly the right amount of chaos for a weekend listen."
     },
     "show": {
@@ -18,7 +19,8 @@
     },
     "album": {
       "title": "LUX — Rosalía",
-      "url": "https://open.spotify.com/album/6jbtHi5R0jMXoliU2OS0lo",
+      "url": "https://lux.rosalia.com/",
+      "spotify": "https://open.spotify.com/album/3SUEJULSGgBDG1j4GQhfYY?si=bZ7cJdkITfeE_wKna6coWQ",
       "note": "A record I keep coming back to for its bold production and genre-bending confidence."
     }
   },
