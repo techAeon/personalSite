@@ -414,33 +414,32 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 }
 
 .fun-fact-mini {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.5rem;
   border-left: 2px solid var(--border);
-  padding: 0.15rem 0 0.15rem 0.6rem;
+  padding: 0.35rem 0.4rem 0.15rem 0.6rem;
   transition: border-color 0.2s ease;
 }
 
 .fun-fact-mini:hover { border-left-color: var(--accent); }
 
+/* Desktop-icon style: big centered icon above the title */
 .fun-fact-mini__icon {
+  display: flex;
+  justify-content: center;
   color: var(--accent);
-  flex-shrink: 0;
-  margin-top: 2px;
+  margin-bottom: 0.4rem;
 }
-.fun-fact-mini__icon svg { width: 14px; height: 14px; display: block; }
+.fun-fact-mini__icon svg { width: 30px; height: 30px; display: block; }
 
-/* Small inline Spotify glyph next to the album title */
+/* Small inline Spotify glyph, bottom-right beside the label */
 .spotify-link {
   display: inline-flex;
-  vertical-align: middle;
+  vertical-align: text-bottom;
   margin-left: 0.25rem;
   color: var(--accent);
   transition: opacity 0.2s ease;
 }
 .spotify-link:hover { opacity: 0.7; }
-.spotify-link svg { width: 13px; height: 13px; }
+.spotify-link svg { width: 16px; height: 16px; }
 
 .fun-fact-mini__value {
   font-family: var(--serif);
@@ -450,6 +449,7 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
   line-height: 1.3;
   letter-spacing: 0.02em;
   margin: 0;
+  text-align: center;
 }
 
 .fun-fact-mini__value a {

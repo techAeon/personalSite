@@ -132,10 +132,8 @@ description: US patent attorney and IP strategist in Munich. I help people prote
                       <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
                     </svg>
                   </span>
-                  <div>
-                    <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.book.url }}" target="_blank" rel="noopener">{{ profile.funFacts.book.title }}</a></p>
-                    <p class="fun-fact-mini__label">Favorite story</p>
-                  </div>
+                  <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.book.url }}" target="_blank" rel="noopener">{{ profile.funFacts.book.title }}</a></p>
+                  <p class="fun-fact-mini__label">Favorite story</p>
                 </div>
                 <div class="fun-fact-mini">
                   <span class="fun-fact-mini__icon" aria-hidden="true">
@@ -146,10 +144,8 @@ description: US patent attorney and IP strategist in Munich. I help people prote
                       <line x1="8" y1="23" x2="16" y2="23"/>
                     </svg>
                   </span>
-                  <div>
-                    <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.podcast.url }}" target="_blank" rel="noopener">{{ profile.funFacts.podcast.title }}</a></p>
-                    <p class="fun-fact-mini__label">Weekend listen</p>
-                  </div>
+                  <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.podcast.url }}" target="_blank" rel="noopener">{{ profile.funFacts.podcast.title }}</a></p>
+                  <p class="fun-fact-mini__label">Weekend listen</p>
                 </div>
                 <div class="fun-fact-mini">
                   <span class="fun-fact-mini__icon" aria-hidden="true">
@@ -158,10 +154,8 @@ description: US patent attorney and IP strategist in Munich. I help people prote
                       <polyline points="17 2 12 7 7 2"/>
                     </svg>
                   </span>
-                  <div>
-                    <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.show.url }}" target="_blank" rel="noopener">{{ profile.funFacts.show.title }}</a></p>
-                    <p class="fun-fact-mini__label">Show I recommend</p>
-                  </div>
+                  <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.show.url }}" target="_blank" rel="noopener">{{ profile.funFacts.show.title }}</a></p>
+                  <p class="fun-fact-mini__label">Show I recommend</p>
                 </div>
                 <div class="fun-fact-mini">
                   <span class="fun-fact-mini__icon" aria-hidden="true">
@@ -171,20 +165,17 @@ description: US patent attorney and IP strategist in Munich. I help people prote
                       <line x1="12" y1="12" x2="12.01" y2="12"/>
                     </svg>
                   </span>
-                  <div>
-                    <p class="fun-fact-mini__value">
-                      <a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a>
-                      <a href="{{ profile.funFacts.album.spotify }}" target="_blank" rel="noopener" class="spotify-link" aria-label="Listen on Spotify">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                          <circle cx="12" cy="12" r="10"/>
-                          <path d="M7 9.5c3.5-1.1 7-.7 9.5 1"/>
-                          <path d="M7.5 12.6c2.9-.9 5.7-.5 7.9.8"/>
-                          <path d="M8 15.5c2.2-.6 4.3-.3 6.1.7"/>
-                        </svg>
-                      </a>
-                    </p>
-                    <p class="fun-fact-mini__label">On repeat</p>
-                  </div>
+                  <p class="fun-fact-mini__value"><a href="{{ profile.funFacts.album.url }}" target="_blank" rel="noopener">{{ profile.funFacts.album.title }}</a></p>
+                  <p class="fun-fact-mini__label">On repeat
+                    <a href="{{ profile.funFacts.album.spotify }}" target="_blank" rel="noopener" class="spotify-link" aria-label="Listen on Spotify">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M7 9.5c3.5-1.1 7-.7 9.5 1"/>
+                        <path d="M7.5 12.6c2.9-.9 5.7-.5 7.9.8"/>
+                        <path d="M8 15.5c2.2-.6 4.3-.3 6.1.7"/>
+                      </svg>
+                    </a>
+                  </p>
                 </div>
               </div>
               <a href="{{ '/about' | url }}" class="more-btn">More about me &rarr;</a>
