@@ -180,17 +180,11 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 }
 
 /* ── IMAGE COLUMN ── */
-/* Dot texture matches the project visuals — one motif, used everywhere */
 .image-section {
   display: flex;
   flex-direction: column;
   overflow: hidden;
   background: var(--accent);
-  background-image:
-    radial-gradient(circle, rgba(255,255,255,0.25) 2.5px, transparent 2.5px),
-    radial-gradient(circle, rgba(255,255,255,0.12) 1.5px, transparent 1.5px);
-  background-size: 14px 14px, 9px 9px;
-  background-position: 0 0, 4px 4px;
   position: sticky;
   top: 0;
   max-height: 100vh;
@@ -420,12 +414,33 @@ h1, h2, h3, h4, h5, h6 { font-family: var(--serif); font-weight: 600; line-heigh
 }
 
 .fun-fact-mini {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
   border-left: 2px solid var(--border);
   padding: 0.15rem 0 0.15rem 0.6rem;
   transition: border-color 0.2s ease;
 }
 
 .fun-fact-mini:hover { border-left-color: var(--accent); }
+
+.fun-fact-mini__icon {
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.fun-fact-mini__icon svg { width: 14px; height: 14px; display: block; }
+
+/* Small inline Spotify glyph next to the album title */
+.spotify-link {
+  display: inline-flex;
+  vertical-align: middle;
+  margin-left: 0.25rem;
+  color: var(--accent);
+  transition: opacity 0.2s ease;
+}
+.spotify-link:hover { opacity: 0.7; }
+.spotify-link svg { width: 13px; height: 13px; }
 
 .fun-fact-mini__value {
   font-family: var(--serif);
